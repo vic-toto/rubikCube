@@ -8,7 +8,7 @@ body{
     max-height: 100vh;
     background: url('assets/space.jpg') no-repeat center center fixed;
     background-size: cover;
-    overflow: hidden;
+    margin: 0;
 }
 .container{
     width: 600px;
@@ -19,12 +19,108 @@ body{
     transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
-    align-items: center;   
+    align-items: center;
+    perspective: 2000; 
 }
 .box{
     width: 350px;
     height: 350px;
     position: absolute;
     transform-style: preserve-3d;
+    transition: all is ease-out;
 
+}
+
+.box div{
+    width: 350px;
+    height: 350px;
+    position: absolute;
+    background: #ffff;
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(calc(350px / 4), ifr));
+    gap: 4px;
+    padding: 4px;
+}
+
+.top{
+    bottom: 175px;
+    transform: rotateX(90deg); 
+}
+
+.bottom{
+    top: 175px;
+    transform: rotateX(-90deg); 
+}
+
+.left{
+    right: 175px;
+    transform: rotateY(-90deg); 
+}
+
+.right{
+    left: 175px;
+    transform: rotateY(90deg); 
+}
+
+.front{
+    transform: translateZ(175px); 
+}
+
+.back{
+    transform: translateZ(-175px); 
+}
+
+.box div span{
+    height: calc(350px / 3 - 6px);
+    background-color: var(--clr);
+    border-radius: 10px;
+    position: relative;
+    z-index: -1;
+    overflow: hidden;
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 2rem;
+    background-size: 100%;
+}
+
+.box div > span::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate((-50%, -50%));
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    backdrop-filter: blur(5px);
+    background: linear-gradient(to border-bottom-right, var(--clr) 60%, #bfbfbf);
+    box-shadow: -10px -30px 30px rgba(0,0,0,0.2);
+    z-index: -1;
+    
+}
+
+.box div > span::after {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    top: 0;
+    left: 0;
+    background: linear-gradient(#ffffff44 50%, transparent 50%);
+    z-index: -1;
+    backdrop-filter: blur(5px);
+    transform: rotate(-40deg);
+}
+
+.nameLetters{
+    font-size: 3.5rem;
+    font-weight: 700;
+    z-index: 10000 !important;
+    font-family: sans-serif;
+    user-select: none;
+    pointer-events: none;
 }
