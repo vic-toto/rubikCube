@@ -8,9 +8,23 @@
     <link rel="stylesheet" href="style.css" />
     <title> 3D Rubik's Cube </title>
 </head>
-
 ><body>
+    <div class="container">
+        <div class="box"></div>
+    </div>
 
+    <script>
+        let box = document.querySelector('.box')
+        const color = ['#F8BBD0', '#FF4081', '#FF80AB', '#D500F9', '#FFB3C1', '#F06292']
+        const directions = ['front', 'back', 'left', 'right', 'top', 'bottom']
+        
+        for (var i of directions){
+            console.log(i)
+            let direction = document.createElement('div')
+            box.appendChild(direction)
+            direction.classList.add(i);
+            direction.setAttribute('style', '--clr:${color[directions.indexOf(i)]}')
+        }
+    </script>
 </body>
-
 </html>
