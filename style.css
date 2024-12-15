@@ -14,7 +14,7 @@ body {
 
 .container {
     width: 600px;
-    height: 600px;
+    height: 300px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -95,12 +95,63 @@ body {
     background-color: rgba(0, 0, 0, 0.1); /* Slight darkening on hover */
 } */
 
-/* Name styling inside grid cells */
-.nameLetters {
-    font-size: 3.5rem;
-    font-weight: 700;
-    z-index: 10000 !important;
-    font-family: sans-serif;
-    user-select: none;
-    pointer-events: none;
+/* Reset any default margins/paddings for consistent rendering */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+/* Button Container Styling */
+.button-container {
+    position: fixed; 
+    bottom: 50px; 
+    width: 100%; /* Spans the full width of the page */
+    display: flex; /* Use Flexbox for layout */
+    justify-content: space-between; /* Distribute buttons: left, center, right */
+    align-items: center; /* Align buttons vertically within the container */
+    padding: 0 300px; /* Add spacing to left and right edges */
+    box-sizing: border-box; /* Include padding in width calculations */
+    border-radius: 50px;
+}
+
+/* Pixel Button Styling */
+.pixel-button {
+    font-family: 'Press Start 2P', sans-serif; /* Pixel-style font */
+    font-size: 1.5rem;
+    color: black;
+    background-color: white;
+    border: 4px solid black;
+    padding: 15px 30px;
+    box-shadow: 0 10px black;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none; /* Disable text selection */
+    text-align: center;
+    border-radius: 20px;
+}
+
+/* Pixelated edges when active */
+.pixel-button:active {
+    box-shadow: 0 4px black;
+    transform: translateY(4px); /* Button presses down */
+}
+
+/* Pixelated hover effect */
+.pixel-button:hover {
+    background-color: #f2f2f2; /* Light gray */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+    .pixel-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+    .button-container {
+        padding: 0 10px; /* Adjust padding for smaller screens */
+    }
 }

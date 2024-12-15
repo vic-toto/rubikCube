@@ -47,35 +47,13 @@
                 <span></span><span></span><span></span>
                 <span></span><span></span><span></span>
             </div>
+        </div>
     </div>
-
-    <script>
-        let box = document.querySelector('.box');
-        let isKeyDown = false;
-
-        document.documentElement.addEventListener('mousedown', function(e) {
-        switch (isKeyDown) {
-            case false:
-                isKeyDown = true;
-                break;
-            case true:
-                isKeyDown = false;
-            }
-        });
-
-        document.documentElement.addEventListener('mousemove', function(e) {
-            if (isKeyDown) {
-                rotateCube(e.clientX, e.clientY);
-            }
-        });
-
-        function rotateCube(x,y){
-            console.log(x,y)
-        
-            let xValue = Math.floor((x/2) + 100)
-            let yValue = Math.floor((y/2) + 100)
-            box.style.transform = `rotateX(${yValue}deg) rotateY(${xValue}deg)`
-        }
-    </script>
+    <div class="button-container">
+        <button class="pixel-button">SHUFFLE ME</button>
+        <button class="pixel-button">SOLVE ME</button>
+        <button class="pixel-button">AMUSE ME</button>
+    </div>
+    <script src="functions.js"></script>
 </body>
 </html>
