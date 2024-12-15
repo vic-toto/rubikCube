@@ -1,16 +1,18 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body{
+
+body {
     width: 100%;
     max-height: 100vh;
     background: url('assets/space.jpg') no-repeat center center fixed;
     background-size: cover;
     margin: 0;
 }
-.container{
+
+.container {
     width: 600px;
     height: 600px;
     position: absolute;
@@ -20,65 +22,80 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    perspective: 2000; 
+    perspective: 2000px; /* Corrected perspective value */
 }
-.box{
+
+.box {
     width: 350px;
     height: 350px;
     position: absolute;
     transform-style: preserve-3d;
-    transition: all is ease-out;
-
+    transition: all 0.1s ease-out;
 }
 
-.box div{
+/* Faces of the cube */
+
+.top {
+    position: absolute;
+    bottom: 175px;
+    transform: rotateX(90deg);
     width: 350px;
     height: 350px;
+    background-color: #98FF98; /* Mint Green */
+}
+
+.bottom {
     position: absolute;
-    background: #ffff;
-    display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(calc(350px / 4), ifr));
-    gap: 4px;
-    padding: 4px;
-}
-
-.top{
-    bottom: 175px;
-    transform: rotateX(90deg); 
-}
-
-.bottom{
     top: 175px;
-    transform: rotateX(-90deg); 
+    transform: rotateX(-90deg);
+    width: 350px;
+    height: 350px;
+    background-color: #D8B6FF; /* Lilac */
 }
 
-.left{
+.left {
+    position: absolute;
     right: 175px;
-    transform: rotateY(-90deg); 
+    transform: rotateY(-90deg);
+    width: 350px;
+    height: 350px;
+    background-color: #FFB6C1; /* Baby Pink */
 }
 
-.right{
+.right {
+    position: absolute;
     left: 175px;
-    transform: rotateY(90deg); 
+    transform: rotateY(90deg);
+    width: 350px;
+    height: 350px;
+    background-color: #FFCC99; /* Pastel Orange */
 }
 
-.front{
-    transform: translateZ(175px); 
+.front {
+    position: absolute;
+    transform: translateZ(175px);
+    width: 350px;
+    height: 350px;
+    background-color: #ADD8E6; /* Light Blue */
 }
 
-.back{
-    transform: translateZ(-175px); 
+.back {
+    position: absolute;
+    transform: translateZ(-175px);
+    width: 350px;
+    height: 350px;
+    background-color: #FFFFE0; /* Light Yellow */
 }
 
-.box div span{
+/* Styling for the span elements inside the div faces */
+.box div span {
     height: calc(350px / 3 - 6px);
-    background-color: var(--clr);
+    background-color: transparent;
     border-radius: 10px;
     position: relative;
     z-index: -1;
     overflow: hidden;
     text-align: center;
-    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -92,15 +109,14 @@ body{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate((-50%, -50%));
+    transform: translate(-50%, -50%);
     width: 60px;
     height: 60px;
     border-radius: 50%;
     backdrop-filter: blur(5px);
     background: linear-gradient(to border-bottom-right, var(--clr) 60%, #bfbfbf);
-    box-shadow: -10px -30px 30px rgba(0,0,0,0.2);
+    box-shadow: -10px -30px 30px rgba(0, 0, 0, 0.2);
     z-index: -1;
-    
 }
 
 .box div > span::after {
@@ -116,7 +132,7 @@ body{
     transform: rotate(-40deg);
 }
 
-.nameLetters{
+.nameLetters {
     font-size: 3.5rem;
     font-weight: 700;
     z-index: 10000 !important;

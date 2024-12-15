@@ -10,37 +10,18 @@
 </head>
 ><body>
     <div class="container">
-        <div class="box"></div>
+        <div class="box">
+            <div class="top"></div>
+            <div class="bottom"></div>
+            <div class="left"></div>
+            <div class="right"></div>
+            <div class="front"></div>
+            <div class="back"></div>
+        </div>
     </div>
 
     <script>
-        let box = document.querySelector('.box')
-        const color = ['#9B59B6', '#8E44AD', '#D5B0FF', '#3498DB', '#F39C12', '#F5A623'];
-        const directions = ['front', 'back', 'left', 'right', 'top', 'bottom']
-        
-        for (var i of directions){
-            console.log(i)
-            let direction = document.createElement('div')
-            box.appendChild(direction)
-            direction.classList.add(i);
-            direction.setAttribute('style', `--clr:${color[directions.indexOf(i)]}`)
-
-            for (let j = 0; j <3; j++){
-                let span = document.createElement('span')
-
-                direction.appendChild(span)
-
-                let name = "TECHUSTAAD"
-
-                if (i==='bottom'){
-                    let nameChars = name.split('')
-                    span.innerHTML = nameChars[j]
-                    span.classList.add("nameLetters")
-                }
-            }
-            direction.querySelector('span').setAttribute('style', `--clr:${color[directions.indexOf(i)]}`)
-
-        }
+        let box = document.querySelector('.box');
         let isKeyDown = false;
 
         document.documentElement.addEventListener('mousedown', function(e) {
@@ -53,15 +34,15 @@
             }
         });
 
-document.documentElement.addEventListener('mousemove', function(e) {
-    if (isKeyDown) {
-        rotateCube(e.clientX, e.clientY);
-    }
-});
+        document.documentElement.addEventListener('mousemove', function(e) {
+            if (isKeyDown) {
+                rotateCube(e.clientX, e.clientY);
+            }
+        });
 
         function rotateCube(x,y){
             console.log(x,y)
-
+        
             let xValue = Math.floor((x/2) + 100)
             let yValue = Math.floor((y/2) + 100)
             box.style.transform = `rotateX(${yValue}deg) rotateY(${xValue}deg)`
