@@ -6,7 +6,7 @@
 
 body {
     width: 100%;
-    max-height: 100vh;
+    height: 100vh;
     background: url('assets/space.jpg') no-repeat center center fixed;
     background-size: cover;
     margin: 0;
@@ -22,116 +22,80 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    perspective: 2000px; /* Corrected perspective value */
+    perspective: 2000px;
 }
+
+.border-radius {
+    border-radius: 10px;
+    -moz-border-radius: 10px; /* firefox */
+    -webkit-border-radius: 10px; /* safari, chrome */
+    }
 
 .box {
     width: 350px;
     height: 350px;
-    position: absolute;
+    position: relative;
     transform-style: preserve-3d;
     transition: all 0.1s ease-out;
 }
 
-/* Faces of the cube */
+.box div {
+    width                : 350px;
+    height               : 350px;
+    position             : absolute;
+    display              : grid;
+    grid-template-columns: 90px 90px 90px ;
+    gap                  : 20px;
+    padding              : 20px;
+    border-radius: 20px; 
+}
 
 .top {
-    position: absolute;
-    bottom: 175px;
-    transform: rotateX(90deg);
-    width: 350px;
-    height: 350px;
+    transform: rotateX(90deg) translateZ(175px);
     background-color: #98FF98; /* Mint Green */
 }
 
 .bottom {
-    position: absolute;
-    top: 175px;
-    transform: rotateX(-90deg);
-    width: 350px;
-    height: 350px;
+    transform: rotateX(-90deg) translateZ(175px);
     background-color: #D8B6FF; /* Lilac */
 }
 
 .left {
-    position: absolute;
-    right: 175px;
-    transform: rotateY(-90deg);
-    width: 350px;
-    height: 350px;
+    transform: rotateY(90deg) translateZ(175px);
     background-color: #FFB6C1; /* Baby Pink */
 }
 
 .right {
-    position: absolute;
-    left: 175px;
-    transform: rotateY(90deg);
-    width: 350px;
-    height: 350px;
+    transform: rotateY(-90deg) translateZ(175px);
     background-color: #FFCC99; /* Pastel Orange */
 }
 
 .front {
-    position: absolute;
     transform: translateZ(175px);
-    width: 350px;
-    height: 350px;
     background-color: #ADD8E6; /* Light Blue */
 }
 
 .back {
-    position: absolute;
     transform: translateZ(-175px);
-    width: 350px;
-    height: 350px;
     background-color: #FFFFE0; /* Light Yellow */
 }
 
-/* Styling for the span elements inside the div faces */
 .box div span {
-    height: calc(350px / 3 - 6px);
-    background-color: transparent;
-    border-radius: 10px;
-    position: relative;
-    z-index: -1;
-    overflow: hidden;
-    text-align: center;
+    background-color: black;
+    border: 5px solid black; /* Pixelated border */
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
-    font-size: 2rem;
-    background-size: 100%;
+    position: relative;
 }
 
-.box div > span::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    backdrop-filter: blur(5px);
-    background: linear-gradient(to border-bottom-right, var(--clr) 60%, #bfbfbf);
-    box-shadow: -10px -30px 30px rgba(0, 0, 0, 0.2);
-    z-index: -1;
-}
+/* Optional hover effect for better visibility */
+/* .box div span:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Slight darkening on hover */
+} */
 
-.box div > span::after {
-    content: "";
-    position: absolute;
-    width: 350px;
-    height: 350px;
-    top: 0;
-    left: 0;
-    background: linear-gradient(#ffffff44 50%, transparent 50%);
-    z-index: -1;
-    backdrop-filter: blur(5px);
-    transform: rotate(-40deg);
-}
-
+/* Name styling inside grid cells */
 .nameLetters {
     font-size: 3.5rem;
     font-weight: 700;
