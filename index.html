@@ -2,58 +2,106 @@
 <html lang="en">
 
 <head>
-    <meta charset="UFT-8" />
-    <meta hppt-equiv="X-UA-Compatible" content="IE-edge"
-    <meta name="viewport" content="width=devide-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title> 3D Rubik's Cube </title>
+    <title>3D Rubik's Cube</title>
 </head>
-><body>
+
+<body>
     <div class="container">
-        <div class="box">
-            <div class="top">
-                <!-- 9 spans for the 3x3 grid effect on the top face -->
-                <span></span><span></span><span></span>
-                <span></span><span></span><span></span>
-                <span></span><span></span><span></span>
+        <div class="rubiks-cube">
+            <!-- Front face -->
+            <div class="face front">
+                <div class="mini-cube corner" id="front-top-left"></div>
+                <div class="mini-cube border" id="front-top-center"></div>
+                <div class="mini-cube corner" id="front-top-right"></div>
+                <div class="mini-cube border" id="front-center-left"></div>
+                <div class="mini-cube center" id="front-center"></div>
+                <div class="mini-cube border" id="front-center-right"></div>
+                <div class="mini-cube corner" id="front-bottom-left"></div>
+                <div class="mini-cube border" id="front-bottom-center"></div>
+                <div class="mini-cube corner" id="front-bottom-right"></div>
             </div>
-            <div class="bottom">
-                <!-- 9 spans for the bottom face -->
-                <span></span><span></span><span></span>
-                <span></span><span></span><span></span>
-                <span></span><span></span><span></span>
+
+            <!-- Back face -->
+            <div class="face back">
+                <div class="mini-cube corner" id="back-top-left"></div>
+                <div class="mini-cube border" id="back-top-center"></div>
+                <div class="mini-cube corner" id="back-top-right"></div>
+                <div class="mini-cube border" id="back-center-left"></div>
+                <div class="mini-cube center" id="back-center"></div>
+                <div class="mini-cube border" id="back-center-right"></div>
+                <div class="mini-cube corner" id="back-bottom-left"></div>
+                <div class="mini-cube border" id="back-bottom-center"></div>
+                <div class="mini-cube corner" id="back-bottom-right"></div>
             </div>
-            <div class="left">
-                <!-- 9 spans for the left face -->
-                <span></span><span></span><span></span>
-                <span></span><span></span><span></span>
-                <span></span><span></span><span></span>
+
+            <!-- Left face -->
+            <div class="face left">
+                <div class="mini-cube corner" id="left-top-left"></div>
+                <div class="mini-cube border" id="left-top-center"></div>
+                <div class="mini-cube corner" id="left-top-right"></div>
+                <div class="mini-cube border" id="left-center-left"></div>
+                <div class="mini-cube center" id="left-center"></div>
+                <div class="mini-cube border" id="left-center-right"></div>
+                <div class="mini-cube corner" id="left-bottom-left"></div>
+                <div class="mini-cube border" id="left-bottom-center"></div>
+                <div class="mini-cube corner" id="left-bottom-right"></div>
             </div>
-            <div class="right">
-                <!-- 9 spans for the right face -->
-                <span></span><span></span><span></span>
-                <span></span><span></span><span></span>
-                <span></span><span></span><span></span>
+
+            <!-- Right face -->
+            <div class="face right">
+                <div class="mini-cube corner" id="right-top-left"></div>
+                <div class="mini-cube border" id="right-top-center"></div>
+                <div class="mini-cube corner" id="right-top-right"></div>
+                <div class="mini-cube border" id="right-center-left"></div>
+                <div class="mini-cube center" id="right-center"></div>
+                <div class="mini-cube border" id="right-center-right"></div>
+                <div class="mini-cube corner" id="right-bottom-left"></div>
+                <div class="mini-cube border" id="right-bottom-center"></div>
+                <div class="mini-cube corner" id="right-bottom-right"></div>
             </div>
-            <div class="front">
-                <!-- 9 spans for the front face -->
-                <span></span><span></span><span></span>
-                <span></span><span></span><span></span>
-                <span></span><span></span><span></span>
+
+            <!-- Top face -->
+            <div class="face top">
+                <div class="mini-cube corner" id="top-top-left"></div>
+                <div class="mini-cube border" id="top-top-center"></div>
+                <div class="mini-cube corner" id="top-top-right"></div>
+                <div class="mini-cube border" id="top-center-left"></div>
+                <div class="mini-cube center" id="top-center"></div>
+                <div class="mini-cube border" id="top-center-right"></div>
+                <div class="mini-cube corner" id="top-bottom-left"></div>
+                <div class="mini-cube border" id="top-bottom-center"></div>
+                <div class="mini-cube corner" id="top-bottom-right"></div>
             </div>
-            <div class="back">
-                <!-- 9 spans for the back face -->
-                <span></span><span></span><span></span>
-                <span></span><span></span><span></span>
-                <span></span><span></span><span></span>
+
+            <!-- Bottom face -->
+            <div class="face bottom">
+                <div class="mini-cube corner" id="bottom-top-left"></div>
+                <div class="mini-cube border" id="bottom-top-center"></div>
+                <div class="mini-cube corner" id="bottom-top-right"></div>
+                <div class="mini-cube border" id="bottom-center-left"></div>
+                <div class="mini-cube center" id="bottom-center"></div>
+                <div class="mini-cube border" id="bottom-center-right"></div>
+                <div class="mini-cube corner" id="bottom-bottom-left"></div>
+                <div class="mini-cube border" id="bottom-bottom-center"></div>
+                <div class="mini-cube corner" id="bottom-bottom-right"></div>
             </div>
         </div>
     </div>
+
+    <!-- Buttons -->
     <div class="button-container">
         <button class="pixel-button">SHUFFLE ME</button>
         <button class="pixel-button">SOLVE ME</button>
         <button class="pixel-button">AMUSE ME</button>
     </div>
+
+    <!-- External JavaScript -->
+    <script src="setColors.js"></script>
     <script src="functions.js"></script>
 </body>
+
 </html>

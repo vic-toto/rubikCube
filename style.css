@@ -14,7 +14,7 @@ body {
 
 .container {
     width: 600px;
-    height: 300px;
+    height: 600px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -31,7 +31,8 @@ body {
     -webkit-border-radius: 10px; /* safari, chrome */
     }
 
-.box {
+/* The rubiks cube container */
+.rubiks-cube {
     width: 350px;
     height: 350px;
     position: relative;
@@ -39,61 +40,94 @@ body {
     transition: all 0.1s ease-out;
 }
 
-.box div {
-    width                : 350px;
-    height               : 350px;
-    position             : absolute;
-    display              : grid;
-    grid-template-columns: 90px 90px 90px ;
-    gap                  : 20px;
-    padding              : 20px;
-    border-radius: 20px; 
+/* Faces styling and grid layout for each face */
+.face {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: black;
 }
 
 .top {
     transform: rotateX(90deg) translateZ(175px);
-    background-color: #98FF98; /* Mint Green */
+     /* background-color: #98FF98; */
 }
 
 .bottom {
     transform: rotateX(-90deg) translateZ(175px);
-    background-color: #D8B6FF; /* Lilac */
+    /* background-color: #D8B6FF; Lilac */
 }
 
 .left {
     transform: rotateY(90deg) translateZ(175px);
-    background-color: #FFB6C1; /* Baby Pink */
+    /* background-color: #FFB6C1; Baby Pink */
 }
 
 .right {
     transform: rotateY(-90deg) translateZ(175px);
-    background-color: #FFCC99; /* Pastel Orange */
+    /* background-color: #FFCC99; Pastel Orange */
 }
 
 .front {
     transform: translateZ(175px);
-    background-color: #ADD8E6; /* Light Blue */
+    /* background-color: #ADD8E6; Light Blue */
 }
 
 .back {
     transform: translateZ(-175px);
-    background-color: #FFFFE0; /* Light Yellow */
+    /* background-color: #FFFFE0; Light Yellow */
 }
 
-.box div span {
-    background-color: black;
-    border: 5px solid black; /* Pixelated border */
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Mini cube styles for corner, border, and center */
+.mini-cube {
+    width: (350/3)px;
+    height: (350/3)px;
     position: relative;
+    display: block;
 }
 
-/* Optional hover effect for better visibility */
-/* .box div span:hover {
-    background-color: rgba(0, 0, 0, 0.1); /* Slight darkening on hover */
-} */
+.mini-cube::before,
+.mini-cube::after {
+    content: '';
+    position: absolute;
+    background-color: transparent;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+/* Define mini-cube sides */
+.mini-cube.corner::before {
+    background-color: transparent;
+}
+
+.mini-cube.border::before {
+    background-color: transparent;
+}
+
+.mini-cube.center::before {
+    background-color: transparent;
+}
+
+.mini-cube::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid black; /* Black border for each face */
+    box-sizing: border-box;
+}
+
+/* Placeholder to see the faces */
+.mini-cube {
+    background-color: black; /* Placeholder color */
+}
 
 /* Reset any default margins/paddings for consistent rendering */
 body, html {
@@ -106,8 +140,8 @@ body, html {
 
 /* Button Container Styling */
 .button-container {
-    position: fixed; 
-    bottom: 50px; 
+    position: fixed; /* Sticks the container to the viewport */
+    bottom: 30px; /* Position 30px above the bottom edge */
     width: 100%; /* Spans the full width of the page */
     display: flex; /* Use Flexbox for layout */
     justify-content: space-between; /* Distribute buttons: left, center, right */
@@ -125,7 +159,7 @@ body, html {
     background-color: white;
     border: 4px solid black;
     padding: 15px 30px;
-    box-shadow: 0 10px black;
+    box-shadow: 0 8px black;
     text-transform: uppercase;
     cursor: pointer;
     transition: all 0.2s ease;

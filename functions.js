@@ -1,7 +1,9 @@
 // functions.js
 
-let box = document.querySelector('.box');
 let isKeyDown = false;
+let startY = 0;
+let box = document.querySelector('.rubiks-cube');
+
 // Add event listeners
 document.documentElement.addEventListener('mousedown', toggleMouseState);
 document.documentElement.addEventListener('mousemove', handleMouseMove);
