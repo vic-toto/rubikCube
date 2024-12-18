@@ -38,18 +38,19 @@ body {
     position: relative;
     transform-style: preserve-3d;
     transition: all 0.1s ease-out;
+    perspective: 2000;
 }
 
 /* Faces styling and grid layout for each face */
 .face {
-    position: absolute;
+    position: relative;
     width: 350px;
-    height: 350px;
+    /* height: 350px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     gap: 20px;
-    padding: 20px;
+    padding: 20px; */
     border-radius: 10px;
     background-color: black;
 }
@@ -84,50 +85,27 @@ body {
     /* background-color: #FFFFE0; Light Yellow */
 }
 
-/* Mini cube styles for corner, border, and center */
+/* Mini-cube and its faces */
 .mini-cube {
-    width: (350/3)px;
-    height: (350/3)px;
     position: relative;
-    display: block;
+    width: 100px;
+    height: 100px;
+    transform-style: preserve-3d;
+    transition: all 0.1s ease-out;
+   transform: translateZ(0px); 
 }
 
-.mini-cube::before,
-.mini-cube::after {
-    content: '';
+/* Each face of the mini-cube */
+.mini-cube-face {
     position: absolute;
-    background-color: transparent;
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
+    width: 100px;
+    height: 100px;
+    background-color: red; /* Example color, can change based on position */
+    border: 1px solid #000;
+    transform: translateZ(0px); 
 }
 
-/* Define mini-cube sides */
-.mini-cube.corner::before {
-    background-color: transparent;
-}
 
-.mini-cube.border::before {
-    background-color: transparent;
-}
-
-.mini-cube.center::before {
-    background-color: transparent;
-}
-
-.mini-cube::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 2px solid black; /* Black border for each face */
-    box-sizing: border-box;
-}
-
-/* Placeholder to see the faces */
-.mini-cube {
-    background-color: black; /* Placeholder color */
-}
 
 /* Reset any default margins/paddings for consistent rendering */
 body, html {
