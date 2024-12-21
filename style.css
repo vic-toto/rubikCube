@@ -78,9 +78,7 @@ body {
 
 .front {
     transform: translateZ(150px);
-
-    background-color: transparent;
-    /* background-color: #ADD8E6; Light Blue */
+    /* background-color: #ADD8E6; */
 }
 
 .back {
@@ -95,7 +93,6 @@ body {
     height: 100px;
     transform-style: preserve-3d;
     transition: all 0.1s ease-out;
-   transform: translateZ(0px); 
 }
 
 /* Each face of the mini-cube */

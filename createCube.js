@@ -12,12 +12,6 @@ faceNames.forEach(faceName => {
     rubiksCube.appendChild(face);
 });
 
-// Select the front face
-const frontFace = document.querySelector('.front');
-// Create the mini-cube
-const miniCube = document.createElement('div');
-miniCube.classList.add('mini-cube');
-
 // Define transformations for each face of the mini-cube
 const miniCubeFaces = [
     { class: 'mini-cube-face front', color: 'red', transform: 'translateZ(50px)' },
@@ -28,18 +22,37 @@ const miniCubeFaces = [
     { class: 'mini-cube-face right', color: 'orange', transform: 'rotateY(90deg) translateZ(50px)' },
 ];
 
-// Create and append each face to the mini-cube
-miniCubeFaces.forEach(faceData => {
-    const face = document.createElement('div');
-    face.className = faceData.class;
-    face.style.backgroundColor = faceData.color;
-    face.style.transform = faceData.transform;
-    face.style.width = '100px';
-    face.style.height = '100px';
-    face.style.border = '1px solid #000'; // Optional: for visibility
-    miniCube.appendChild(face);
-});
-// Add the mini-cube to the front face
-miniCube.style.transform = 'translate(0px, 0px) translateZ(100px)';
+let helper = 0;
 
-rubiksCube.appendChild(miniCube);
+for (let z = 1; z >= -1; z--) {
+    for (let x = 0; x < 3; x++) {
+        for (let y = 0; y < 3; y++) {
+            // Create the mini-cube
+            const miniCube = document.createElement('div');
+            miniCube.classList.add('mini-cube');
+            // Create and append each face to the mini-cube
+            miniCubeFaces.forEach(faceData => {
+                const face = document.createElement('div');
+                face.className = faceData.class;
+                face.style.backgroundColor = faceData.color;
+                face.style.transform = faceData.transform;
+                face.style.width = '100px';
+                face.style.height = '100px';
+                face.style.border = '1px solid #000'; // Optional: for visibility
+                miniCube.appendChild(face);
+            });
+            // setting cube from top left to bottom right
+            miniCube.style.transform = "translateZ(" + z*100 +"px)";
+            miniCube.style.left = (x*100) + "px";
+            miniCube.style.top = (helper*-300) + "px";
+            // console.log("translate("+ (x*100) + "px," + (y*100) + "px) " + "translateZ("+ (z*100) +"px)");
+            rubiksCube.appendChild(miniCube);
+        }
+        helper++;
+    }
+}
+    
+
+
+
+
