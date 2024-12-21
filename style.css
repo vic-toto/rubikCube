@@ -33,55 +33,58 @@ body {
 
 /* The rubiks cube container */
 .rubiks-cube {
-    width: 350px;
-    height: 350px;
+    width: 300px;
+    height: 300px;
     position: relative;
     transform-style: preserve-3d;
     transition: all 0.1s ease-out;
     perspective: 2000;
+    background-color: black;
 }
 
 /* Faces styling and grid layout for each face */
 .face {
-    position: relative;
-    width: 350px;
-    /* height: 350px;
+    position: absolute;
+    width: 300px;
+    height: 300px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     gap: 20px;
-    padding: 20px; */
+    padding: 20px;
     border-radius: 10px;
     background-color: black;
 }
 
 .top {
-    transform: rotateX(90deg) translateZ(175px);
+    transform: rotateX(90deg) translateZ(150px);
      /* background-color: #98FF98; */
 }
 
 .bottom {
-    transform: rotateX(-90deg) translateZ(175px);
+    transform: rotateX(-90deg) translateZ(150px);
     /* background-color: #D8B6FF; Lilac */
 }
 
 .left {
-    transform: rotateY(90deg) translateZ(175px);
+    transform: rotateY(90deg) translateZ(150px);
     /* background-color: #FFB6C1; Baby Pink */
 }
 
 .right {
-    transform: rotateY(-90deg) translateZ(175px);
+    transform: rotateY(-90deg) translateZ(150px);
     /* background-color: #FFCC99; Pastel Orange */
 }
 
 .front {
-    transform: translateZ(175px);
+    transform: translateZ(150px);
+
+    background-color: transparent;
     /* background-color: #ADD8E6; Light Blue */
 }
 
 .back {
-    transform: translateZ(-175px);
+    transform: translateZ(-150px);
     /* background-color: #FFFFE0; Light Yellow */
 }
 

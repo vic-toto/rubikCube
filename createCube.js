@@ -40,6 +40,6 @@ miniCubeFaces.forEach(faceData => {
     miniCube.appendChild(face);
 });
 // Add the mini-cube to the front face
-miniCube.style.transform = 'translate(0px, 0px) translateZ(0px)';
+miniCube.style.transform = 'translate(0px, 0px) translateZ(100px)';
 
 rubiksCube.appendChild(miniCube);
