@@ -5,12 +5,12 @@ const faceNames = ['front', 'back', 'top', 'bottom', 'left', 'right'];
 
 // Define transformations for each face of the mini-cube
 const miniCubeFaces = [
-    { class: 'mini-cube-face front', color: 'red', transform: 'translateZ(50px)' },
-    { class: 'mini-cube-face back', color: 'blue', transform: 'rotateY(180deg) translateZ(50px)' },
-    { class: 'mini-cube-face top', color: 'yellow', transform: 'rotateX(90deg) translateZ(50px)' },
-    { class: 'mini-cube-face bottom', color: 'white', transform: 'rotateX(-90deg) translateZ(50px)' },
-    { class: 'mini-cube-face left', color: 'green', transform: 'rotateY(-90deg) translateZ(50px)' },
-    { class: 'mini-cube-face right', color: 'orange', transform: 'rotateY(90deg) translateZ(50px)' },
+    { class: 'mini-cube-face front', color: '#98FF98', transform: 'translateZ(50px)' },
+    { class: 'mini-cube-face back', color: '#D8B6FF', transform: 'rotateY(180deg) translateZ(50px)' },
+    { class: 'mini-cube-face top', color: '#FFB6C1', transform: 'rotateX(90deg) translateZ(50px)' },
+    { class: 'mini-cube-face bottom', color: '#FFCC99', transform: 'rotateX(-90deg) translateZ(50px)' },
+    { class: 'mini-cube-face left', color: '#ADD8E6', transform: 'rotateY(-90deg) translateZ(50px)' },
+    { class: 'mini-cube-face right', color: '#FFFFE0', transform: 'rotateY(90deg) translateZ(50px)' },
 ];
 
 // Create the faces of the Rubik's Cube
@@ -46,8 +46,3 @@ for (let z = 1; z >= -1; z--) {
         helper++;
     }
 }
-    
-
-
-
-
