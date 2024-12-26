@@ -9,11 +9,7 @@ document.documentElement.addEventListener('mousedown', toggleMouseState);
 document.documentElement.addEventListener('mousemove', handleMouseMove);
 
 function toggleMouseState(event) {
-    // Check if the click occurred outside the cube
-    if (!box.contains(event.target)) {
-        isKeyDown = !isKeyDown; // Toggle the state
-        console.log(`Rotation ${isKeyDown ? 'enabled' : 'disabled'}`);
-    }
+        isKeyDown = !isKeyDown; // Toggle the state 
 }
 
 // Handles mouse movement and rotates the cube
@@ -29,3 +25,20 @@ function rotateCube(x, y) {
     let yValue = Math.floor(y / 2 + 100);
     box.style.transform = `rotateX(${yValue}deg) rotateY(${xValue}deg)`;
 }
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowDown') {
+        handleDownKeyPress();
+    }
+});
+
+function handleDownKeyPress() {
+    // all cubes where z = 100 must rotate as if they were on a circle relative
+    // to the center of the face
+
+    if (miniCube.dataset.position[2] == 1){
+        
+    } 
+}
+
+
