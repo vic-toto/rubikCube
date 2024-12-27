@@ -42,7 +42,6 @@ for (let z = 1; z >= -1; z--) {
             miniCube.dataset.position = [x, y, z];
             miniCube.dataset.position0 = [x, y, z];
             miniCube.dataset.miniCubeId = i;
-            console.log(miniCube.dataset);
             miniCube.style.transform = "translateZ(" + z*100 +"px)";
             miniCube.style.left = (x*100) + "px"; //manages position on x axs
             miniCube.style.top = ((helper) * -300) + "px"; //manages position on y axis

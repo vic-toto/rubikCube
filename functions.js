@@ -7,9 +7,15 @@ let box = document.querySelector('.rubiks-cube');
 // Add event listeners
 document.documentElement.addEventListener('mousedown', toggleMouseState);
 document.documentElement.addEventListener('mousemove', handleMouseMove);
+document.documentElement.addEventListener('mouseup', () => (isKeyDown = false));
 
 function toggleMouseState(event) {
-        isKeyDown = !isKeyDown; // Toggle the state 
+    // Check if the click is outside the cube
+    if (!box.contains(event.target)) {
+        isKeyDown = true;
+    } else {
+        isKeyDown = false;
+    }
 }
 
 // Handles mouse movement and rotates the cube
@@ -26,19 +32,54 @@ function rotateCube(x, y) {
     box.style.transform = `rotateX(${yValue}deg) rotateY(${xValue}deg)`;
 }
 
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowDown') {
-        handleDownKeyPress();
-    }
-});
 
-function handleDownKeyPress() {
-    // all cubes where z = 100 must rotate as if they were on a circle relative
-    // to the center of the face
-
-    if (miniCube.dataset.position[2] == 1){
-        
-    } 
+// Helper functions for position transformations
+function addTwo(n) {
+    return (n + 2); 
 }
 
+function removeTwo(n) {
+    return (n -2); 
+}
+
+function addOne(n, m) {
+    return [n + 1, m + 1]; 
+}
+
+function removeOne(n, m) {
+    return [n - 1, m - 1];}
+
+function addNRemoveOne(n, m) {
+    return [n + 1, m - 1];}
+
+// Function to rotate front face clockwise
+function rotateFrontClockwise() {
+    const miniCubes = document.querySelectorAll('.mini-cube');
+    
+    miniCubes.forEach(miniCube => {
+
+        let [x, y, z] = miniCube.dataset.position.split(",");
+        // console.log(z + " id " + miniCube.dataset.miniCubeId);
+
+        if (z == 1) {
+        //     if (x === 0 && y === 0) {
+        //         // Top-left corner mini-cube
+        //         console.log("here " + " " + miniCube.dataset.miniCubeId);}
+                //  const newPosition = [addTwo(x), y, z];
+                //  miniCube.dataset.position = JSON.stringify(newPosition);
+                 miniCube.style.transform += ' rotateZ(90deg)';}
+            //  } else if (x === 1 && y === 0) {
+            //      // Top-center mini-cube
+            //      const newPosition = addNRemoveOne(x, y);
+            //      miniCube.dataset.position = JSON.stringify(newPosition);
+            //      miniCube.style.transform += ' rotateZ(90deg)';
+            //  }
+    });
+}
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowDown') {
+        rotateFrontClockwise();
+    }
+});
 
