@@ -59,21 +59,28 @@ function rotateFrontClockwise() {
     miniCubes.forEach(miniCube => {
 
         let [x, y, z] = miniCube.dataset.position.split(",");
-        // console.log(z + " id " + miniCube.dataset.miniCubeId);
+        // console.log(z + " z id " + miniCube.dataset.miniCubeId);
+        // console.log(x + " x id " + miniCube.dataset.miniCubeId);
+        // console.log(y + " y id " + miniCube.dataset.miniCubeId);
 
         if (z == 1) {
-        //     if (x === 0 && y === 0) {
-        //         // Top-left corner mini-cube
-        //         console.log("here " + " " + miniCube.dataset.miniCubeId);}
-                //  const newPosition = [addTwo(x), y, z];
-                //  miniCube.dataset.position = JSON.stringify(newPosition);
-                 miniCube.style.transform += ' rotateZ(90deg)';}
-            //  } else if (x === 1 && y === 0) {
-            //      // Top-center mini-cube
-            //      const newPosition = addNRemoveOne(x, y);
-            //      miniCube.dataset.position = JSON.stringify(newPosition);
-            //      miniCube.style.transform += ' rotateZ(90deg)';
-            //  }
+            if (x == 0 && y == 0) {
+                // Top-left corner mini-cube
+                console.log("minicube id " + miniCube.dataset.miniCubeId + " old pos " + [x, y, z] );
+                 const newPosition = [addTwo(x), y, z];
+
+                console.log("minicube id " + miniCube.dataset.miniCubeId + " new pos " + newPosition );
+                 miniCube.dataset.position = JSON.stringify(newPosition);
+
+                console.log("minicube id " + miniCube.dataset.miniCubeId + " dataset.pos " + miniCube.dataset.position );
+                 miniCube.style.transform += ' rotateZ(90deg)';
+            } else if (x == 1 && y == 0) {
+                 // Top-center mini-cube
+                 const newPosition = addNRemoveOne(x, y);
+                 miniCube.dataset.position = JSON.stringify(newPosition);
+                 miniCube.style.transform += ' rotateZ(90deg)';
+            }
+        }
     });
 }
 
