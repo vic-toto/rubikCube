@@ -14,3 +14,13 @@ To do:
 - figure out how to solve the cube in less than 20 moves
 
 
+
+
+
+transform 3d 
+y = 0:
+ x = 0; x= 1; x = 2 (transform (x*-200)+200) (x*-200)+200)
+y = 1 
+(transform (y*-100)+200) (x*-200)+200)
+
+               
