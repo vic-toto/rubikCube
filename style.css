@@ -39,7 +39,9 @@ body {
     transform-style: preserve-3d;
     transition: all 0.1s ease-out;
     perspective: 2000;
-    background-color: black;
+    background-color: transparent;
+    overflow: visible;
+
 }
 
 /* Faces styling and grid layout for each face */
@@ -53,7 +55,7 @@ body {
     gap: 20px;
     padding: 20px;
     border-radius: 10px;
-    background-color: black;
+    background-color: transparent;
 }
 
 .top {

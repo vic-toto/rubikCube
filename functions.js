@@ -52,41 +52,33 @@ function removeOne(n, m) {
 function addNRemoveOne(n, m) {
     return [n + 1, m - 1];}
 
-// Function to rotate front face clockwise
 function rotateFrontClockwise() {
-    const miniCubes = document.querySelectorAll('.mini-cube');
+        const miniCubes = document.querySelectorAll('.mini-cube');
+        miniCubes.forEach(miniCube => {
+             let [x, y, z] = miniCube.dataset.position.split(",").map(Number);
     
-    miniCubes.forEach(miniCube => {
-
-        let [x, y, z] = miniCube.dataset.position.split(",");
-        // console.log(z + " z id " + miniCube.dataset.miniCubeId);
-        // console.log(x + " x id " + miniCube.dataset.miniCubeId);
-        // console.log(y + " y id " + miniCube.dataset.miniCubeId);
-
-        if (z == 1) {
-            if (x == 0 && y == 0) {
-                // Top-left corner mini-cube
-                console.log("minicube id " + miniCube.dataset.miniCubeId + " old pos " + [x, y, z] );
-                 const newPosition = [addTwo(x), y, z];
-
-                console.log("minicube id " + miniCube.dataset.miniCubeId + " new pos " + newPosition );
-                 miniCube.dataset.position = JSON.stringify(newPosition);
-
-                console.log("minicube id " + miniCube.dataset.miniCubeId + " dataset.pos " + miniCube.dataset.position );
-                 miniCube.style.transform += ' rotateZ(90deg)';
-            } else if (x == 1 && y == 0) {
-                 // Top-center mini-cube
-                 const newPosition = addNRemoveOne(x, y);
-                 miniCube.dataset.position = JSON.stringify(newPosition);
-                 miniCube.style.transform += ' rotateZ(90deg)';
+            // // Only process mini-cubes on the front face (z = 1)
+            if (z === 1) {
+                if (y == 0)
+                    miniCube.style.transform += `translate3d(${((x*100*-1)+200)}px, ${(x*100)}px, 0px) rotateZ(90deg)`;
+                if (y == 1){
+                    if (x == 0)
+                        miniCube.style.transform += 'translate3d(100px, -100px, 0px) rotateZ(90deg)';
+                    if (x == 1)
+                        miniCube.style.transform += 'rotateZ(90deg)';
+                    if (x == 2)
+                        miniCube.style.transform += 'translate3d(-100px, 100px, 0px) rotateZ(90deg)';
+                }
+                if (y == 2)
+                    miniCube.style.transform += `translate3d(${((x*-100))}px, ${((x*100)-200)}px, 0px) rotateZ(90deg)`;
             }
+        });
+    }
+    
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowDown') {
+            rotateFrontClockwise();
         }
     });
-}
-
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowDown') {
-        rotateFrontClockwise();
-    }
-});
+    
 
