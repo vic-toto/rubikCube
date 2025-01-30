@@ -21,10 +21,9 @@ faceNames.forEach(faceName => {
     rubiksCube.appendChild(face);
 });
 
-let helper = 0;
 let i = 0;
 
-for (let z = 1; z >= -1; z--) {
+for (let z = 2; z >= 0; z--) {
     for (let x = 0; x < 3; x++) {
         for (let y = 0; y < 3; y++) {
             // Create the mini-cube
@@ -43,12 +42,15 @@ for (let z = 1; z >= -1; z--) {
             // setting cube from top left to bottom right
             miniCube.dataset.position = [x, y, z];
             miniCube.dataset.position0 = [x, y, z];
+            miniCube.dataset.rotZ = 90;
+            miniCube.dataset.rotX = 90;
+            miniCube.dataset.rotY = 90;
+
             miniCube.style.transform = "translateZ(" + z*100 +"px)";
             miniCube.style.left = (x*100) + "px"; //manages position on x axs
-            miniCube.style.top = ((helper) * -300) + "px"; //manages position on y axis
+            miniCube.style.top = (y*100) + "px"; //manages position on y axis
             rubiksCube.appendChild(miniCube);
             i++;
         }
-        helper++;
     }
 }
