@@ -141,3 +141,5 @@ dotransformation((200 - (x*100)), x*100, 0);
 new idea
 
 fare un controllo sul transform attuale e ricavare ciò che deve essere trasformato
+se ho ruotatoZ 90, allora per ruotareX in realtà devo ruotareY e viceversa
+se ho ruotatoZ si 180, allora per ruotare X devo ruotare Xdeg*-1 
