@@ -1,4 +1,4 @@
-function rotateFrontClockwise(axisValue) {
+function rotateZClockwise(axisValue) {
         const miniCubes = document.querySelectorAll('.mini-cube');
         miniCubes.forEach(miniCube => {
             let rotZ = +miniCube.dataset.rotZ;
@@ -37,7 +37,7 @@ function rotateFrontClockwise(axisValue) {
 }
 
 
-function rotateSideAntiClockwise(axisValue) {
+function rotateXAntiClockwise(axisValue) {
     const miniCubes = document.querySelectorAll('.mini-cube');
     miniCubes.forEach(miniCube => {
         
@@ -52,25 +52,24 @@ function rotateSideAntiClockwise(axisValue) {
             
             if (currentY == 0) {
                 currentPosition = [currentX, 2-currentZ, 0];
-                miniCube.style.transform = `translateX(${currentPosition[0]*100}px) translateY(${(currentPosition[1]*100) - (y*100)}px) translateZ(${((currentPosition[2])*100)}px) rotateX(${rotX}deg)`;            
+                miniCube.style.transform = `translateX(${currentPosition[0]*100 - (x*100)}px) translateY(${(currentPosition[1]*100) - (y*100)}px) translateZ(${(currentPosition[2]*100)}px) rotateX(${rotX}deg)`;            
             
             } else if (currentY == 1) {
                 if (currentZ == 0){
                     currentPosition = [currentX, 2, 1];
-                    miniCube.style.transform = `translateX(${currentPosition[0]*100}px) translateY(${(currentPosition[1]*100) - (y*100)}px) translateZ(${((currentPosition[2])*100)}px) rotateX(${rotX}deg)`; ;
+                    miniCube.style.transform = `translateX(${currentPosition[0]*100 - (x*100)}px) translateY(${(currentPosition[1]*100) - (y*100)}px) translateZ(${(currentPosition[2]*100)}px) rotateX(${rotX}deg)`; ;
                 } else if (currentZ == 1){
                     currentPosition = [currentX, currentY, currentZ];
-                    miniCube.style.transform = `translateX(${currentPosition[0]*100}px) translateY(${(currentPosition[1]*100) - (y*100)}px) translateZ(${((currentPosition[2])*100)}px) rotateX(${rotX}deg)`;
+                    miniCube.style.transform = `translateX(${0}px) translateY(${(0)}px) translateZ(${(z*100)}px) rotateX(${rotX}deg)`;
                 } else if (currentZ == 2){
                     currentPosition = [currentX, 0, 1];
-                    miniCube.style.transform = `translateX(${currentPosition[0]*100}px) translateY(${(y*-100)}px) translateZ(${((currentPosition[2])*100)}px) rotateX(${rotX}deg) `;
+                    miniCube.style.transform = `translateX(${currentPosition[0]*100 - (x*100)}px) translateY(${((currentPosition[1]*100)-(y*100))}px) translateZ(${(currentPosition[2]*100)}px) rotateX(${rotX}deg) `;
                 }
             
             } else if (currentY == 2){
                 currentPosition = [currentX, 2-currentZ, 2];
-                miniCube.style.transform = `translateX(${x*100}px) translateY(${(0)}px) rotateX(${rotX}deg) translateZ(${((currentPosition[2])*100)}px)`
-             }
-            
+                miniCube.style.transform = `translateX(${currentPosition[0]*100 - (x*100)}px) translateY(${(currentPosition[1]*100) - (y*100)}px)  translateZ(${(currentPosition[2]*100)}px) rotateX(${rotX}deg)`
+             } 
             miniCube.dataset.rotX = rotX;
             miniCube.dataset.position = currentPosition.join(",");
         }
@@ -81,16 +80,17 @@ function rotateSideAntiClockwise(axisValue) {
     
 document.addEventListener('keydown', (event) => {
     if (event.key === 'f')
-        // rotateClockwise("z", 1);
-        rotateFrontClockwise(2);
+        rotateZClockwise(2);
     else if (event.key === 'm')
-        // rotateClockwise("z", 1);
-        rotateFrontClockwise(1);
+        rotateZClockwise(1);
     else if (event.key === 'b')
-        // rotateClockwise("z", 1);
-        rotateFrontClockwise(0);
-    else if (event.key === 'ArrowDown') 
-         rotateSideAntiClockwise(0);
+        rotateZClockwise(0);
+    else if (event.key === 'l') 
+         rotateXAntiClockwise(0);
+    else if (event.key === 'c') 
+        rotateXAntiClockwise(1);
+    else if (event.key === 'r') 
+        rotateXAntiClockwise(2);
 });
     
 
