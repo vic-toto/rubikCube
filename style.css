@@ -56,7 +56,19 @@ body {
     padding: 20px;
     border-radius: 10px;
     background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif; /* Optional: change font */
 }
+
+.face-name {
+    color: white;
+    font-size: 100px; /* You can adjust this to make the text bigger or smaller */
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Optional: for better visibility */
+}
+
 
 .top {
     transform: rotateX(90deg) translateZ(150px);

@@ -18,6 +18,7 @@ faceNames.forEach(faceName => {
     const face = document.createElement('div');
     face.classList.add('face', faceName);
     face.id = faceName;
+    // face.innerHTML = `<span class="face-name">${faceName}</span>`;
     rubiksCube.appendChild(face);
 });
 
@@ -49,7 +50,7 @@ for (let z = 0; z < 3 ; z++) {
             miniCube.style.transform = "translateZ(" + z*100 +"px)";
             miniCube.style.left = (x*100) + "px"; //manages position on x axs
             miniCube.style.top = (y*100) + "px"; //manages position on y axis
-            miniCube.style.origin = "center center";
+            // miniCube.style.origin = "center center";
 
             rubiksCube.appendChild(miniCube);
             i++;
