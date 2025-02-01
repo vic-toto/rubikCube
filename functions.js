@@ -129,6 +129,8 @@ document.addEventListener('keydown', (event) => {
         rotateXAntiClockwise(2);
     else if (event.key === 'u') 
         rotateYClockwise(0)
+    else if (event.key === 'C') 
+        rotateYClockwise(1)
     else if (event.key === 'd') 
         rotateYClockwise(2)
 });
