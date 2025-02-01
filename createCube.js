@@ -49,6 +49,8 @@ for (let z = 0; z < 3 ; z++) {
             miniCube.style.transform = "translateZ(" + z*100 +"px)";
             miniCube.style.left = (x*100) + "px"; //manages position on x axs
             miniCube.style.top = (y*100) + "px"; //manages position on y axis
+            miniCube.style.origin = "center center";
+
             rubiksCube.appendChild(miniCube);
             i++;
         }
