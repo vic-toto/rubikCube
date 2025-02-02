@@ -1,5 +1,6 @@
 // Select the rubiks cube container
 const rubiksCube = document.querySelector('.rubiks-cube');
+rubiksCube.style.transform = "rotateX(-30deg) rotateY(30deg)";
 // Define the face names for the Rubik's Cube
 const faceNames = ['front', 'back', 'top', 'bottom', 'left', 'right'];
 
@@ -22,7 +23,6 @@ faceNames.forEach(faceName => {
     rubiksCube.appendChild(face);
 });
 
-rubiksCube.style.transform = "rotateX(330deg) rotateY(-330deg)";
 
 let i = 0;
 
