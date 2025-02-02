@@ -22,6 +22,8 @@ faceNames.forEach(faceName => {
     rubiksCube.appendChild(face);
 });
 
+rubiksCube.style.transform = "rotateX(330deg) rotateY(-330deg)";
+
 let i = 0;
 
 for (let z = 0; z < 3 ; z++) {
