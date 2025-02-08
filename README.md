@@ -143,3 +143,7 @@ new idea
 fare un controllo sul transform attuale e ricavare ciò che deve essere trasformato
 se ho ruotatoZ 90, allora per ruotareX in realtà devo ruotareY e viceversa
 se ho ruotatoZ si 180, allora per ruotare X devo ruotare Xdeg*-1 
+
+bocciata questa idea 
+
+serve un algoritmo che mi calcola come interagiscono tra di loro le rotazioni degli assi  

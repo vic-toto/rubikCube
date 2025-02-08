@@ -1,14 +1,3 @@
-// function getRotation(minicube){
-
-//     let rotZ = +minicube.dataset.rotZ;
-//     let rotX = +minicube.dataset.rotX;
-//     let rotY = +minicube.dataset.rotY;
-
-
-
-
-//     return 
-// }
 
 
 function rotateZClockwise(axisValue) {
@@ -18,36 +7,8 @@ function rotateZClockwise(axisValue) {
             let [currentX, currentY, currentZ] = miniCube.dataset.position.split(",").map(Number);
             if (currentZ === axisValue) {
                 
-                let currentPosition = [currentX, currentY, currentZ];
-                
-               
-                
-            let rotX = +miniCube.dataset.rotX;
-            let rotY = +miniCube.dataset.rotY;
-            let rotZ = +miniCube.dataset.rotZ;
-
-            if (rotY != 0 && (rotY % 360 != 0)) {
-
-                let res = ((rotY/90) - (4 * (Math.floor((rotY / 360)))));
-                console.log("res " + res);
-                if ((res == 1 || res == 3)){ //90 deg rotation or equivalent
-                    if (rotZ > 0 && rotZ <= 90 )
-                        rotX -= 90;
-                    else
-                        rotZ += 90;
-                }
-                // if (res == 2){ //180 deg rotation or equivalent
-                //     if (rotX < 90)
-                //         rotY -= 90;
-                // }
-                // if (res == 3) //270 deg rotation or equivalent
-                //     rotX -= 90;
-            } else
-                rotZ += 90;
-    
-            miniCube.dataset.rotX = rotX;
-            miniCube.dataset.rotY = rotY;
-            miniCube.dataset.rotZ = rotZ;
+            let currentPosition = [currentX, currentY, currentZ];
+            calculateRotations(miniCube, 'z', 1);
 
                 if (currentY == 0) {
                     currentPosition = [2, currentX, currentZ];
@@ -58,7 +19,7 @@ function rotateZClockwise(axisValue) {
                         currentPosition = [1, 0, currentZ];
                         miniCube.style.transform = `translateX(${currentPosition[0]*100 - (x*100)}px) translateY(${currentPosition[1] - (y*100)}px) translateZ(${(currentPosition[2]*100)}px) rotateZ(${miniCube.dataset.rotZ}deg) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg)` ;
                     } else if (currentX == 1){
-                        currentPosition = [1, 1, currentZ];
+                        currentPosition = [currentX, currentY, currentZ];
                         miniCube.style.transform = `rotateZ(${miniCube.dataset.rotZ}deg) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg) translateZ(${(z*100)}px)`;
                     } else if (currentX == 2){
                         currentPosition = [1, 2, currentZ];
@@ -69,8 +30,6 @@ function rotateZClockwise(axisValue) {
                     currentPosition = [0, currentX, currentZ];
                     miniCube.style.transform = `translateX(${currentPosition[0]*100 - (x*100)}px) translateY(${currentPosition[1]*100 - (y*100)}px) translateZ(${(currentPosition[2]*100)}px) rotateZ(${miniCube.dataset.rotZ}deg) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg)`
                 }
-
-                
                 miniCube.dataset.position = currentPosition.join(",");
                 
             }
@@ -85,29 +44,8 @@ function rotateYClockwise(axisValue) {
         if (currentY === axisValue) {
            
             let currentPosition = [currentX, currentY, currentZ];
+            calculateRotations(miniCube, 'y', 1);
 
-            let rotX = +miniCube.dataset.rotX;
-            let rotY = +miniCube.dataset.rotY;
-            let rotZ = +miniCube.dataset.rotZ;
-
-            if (rotZ != 0 && (rotZ % 360 != 0)) {
-
-                let res = ((rotZ/90) - (4 * (Math.floor((rotZ / 360)))));
-                
-                if (res == 1)//90 deg rotation or equivalent
-                    rotY -= 90
-                if (res == 2){ //180 deg rotation or equivalent
-                    if (rotX < 90)
-                        rotY -= 90;
-                }
-                if (res == 3) //270 deg rotation or equivalent
-                    rotX -= 90;
-            } else
-                rotY -= 90;
-    
-            miniCube.dataset.rotX = rotX;
-            miniCube.dataset.rotY = rotY;
-            miniCube.dataset.rotZ = rotZ;
             
             if (currentZ == 0) {
                 currentPosition = [2, currentY, currentX];
@@ -145,25 +83,7 @@ function rotateXAntiClockwise(axisValue) {
         if (currentX === axisValue) {
 
             let currentPosition = [currentX, currentY, currentZ];
-            let rotX = +miniCube.dataset.rotX;
-            let rotY = +miniCube.dataset.rotY;
-            let rotZ = +miniCube.dataset.rotZ;
-
-            if (rotZ != 0 && (rotZ % 360 != 0)) {
-
-                let res = ((rotZ/90) - (4 * (Math.floor((rotZ / 360)))));
-                console.log("res " + res); 
-                if (res == 1) //90 deg rotation or equivalent
-                    rotY -= 90;
-                if (res == 2) //180 deg rotation or equivalent
-                    rotX -= 90;
-                if (res == 3) //270 deg rotation or equivalent
-                    rotY += 90;
-            } else
-                rotX += 90;
-    
-            miniCube.dataset.rotX = rotX;
-            miniCube.dataset.rotY = rotY;
+            calculateRotations(miniCube, 'x', -1);
 
             if (currentY == 0) {
                 currentPosition = [currentX, 2-currentZ, 0];
