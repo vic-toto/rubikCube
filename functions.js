@@ -10,26 +10,20 @@ function rotateZClockwise(axisValue) {
             let currentPosition = [currentX, currentY, currentZ];
             calculateRotations(miniCube, 'z', 1);
 
-                if (currentY == 0) {
-                    currentPosition = [2, currentX, currentZ];
-                    miniCube.style.transform = `translateX(${(currentPosition[0]*100) - (x*100)}px) translateY(${currentPosition[1]*100 - (y*100)}px) translateZ(${(currentPosition[2]*100)}px) rotateZ(${miniCube.dataset.rotZ}deg) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg)`;
-                
-                } else if (currentY == 1) {
-                    if (currentX == 0){
+                if (currentY == 0) 
+                    currentPosition = [2, currentX, currentZ]; 
+                else if (currentY == 1) {
+                    if (currentX == 0)
                         currentPosition = [1, 0, currentZ];
-                        miniCube.style.transform = `translateX(${currentPosition[0]*100 - (x*100)}px) translateY(${currentPosition[1] - (y*100)}px) translateZ(${(currentPosition[2]*100)}px) rotateZ(${miniCube.dataset.rotZ}deg) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg)` ;
-                    } else if (currentX == 1){
+                    else if (currentX == 1)
                         currentPosition = [currentX, currentY, currentZ];
-                        miniCube.style.transform = `rotateZ(${miniCube.dataset.rotZ}deg) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg) translateZ(${(z*100)}px)`;
-                    } else if (currentX == 2){
-                        currentPosition = [1, 2, currentZ];
-                        miniCube.style.transform = `translateX(${currentPosition[0]*100 - (x*100)}px) translateY(${currentPosition[1]*100 - (y*100)}px) translateZ(${(currentPosition[2]*100)}px) rotateZ(${miniCube.dataset.rotZ}deg) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg)`;
-                    }
-                
-                } else if (currentY == 2){
+                    else if (currentX == 2)
+                        currentPosition = [1, 2, currentZ];  
+                } 
+                else if (currentY == 2)
                     currentPosition = [0, currentX, currentZ];
-                    miniCube.style.transform = `translateX(${currentPosition[0]*100 - (x*100)}px) translateY(${currentPosition[1]*100 - (y*100)}px) translateZ(${(currentPosition[2]*100)}px) rotateZ(${miniCube.dataset.rotZ}deg) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg)`
-                }
+                
+                miniCube.style.transform = `translateX(${(currentPosition[0]*100) - (x*100)}px) translateY(${currentPosition[1]*100 - (y*100)}px) translateZ(${(currentPosition[2]*100)}px) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg) rotateZ(${miniCube.dataset.rotZ}deg)`;
                 miniCube.dataset.position = currentPosition.join(",");
                 
             }
@@ -49,23 +43,18 @@ function rotateYClockwise(axisValue) {
             
             if (currentZ == 0) {
                 currentPosition = [2, currentY, currentX];
-                miniCube.style.transform = `translateX(${(currentPosition[0]*100 - (x*100))}px) translateY(${currentPosition[1]*100 - (y*100)}px) translateZ(${(currentPosition[2]*100) }px)  rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg) rotateZ(${miniCube.dataset.rotZ}deg)`;  
             } else if (currentZ == 1) {
-                if (currentX == 0){
+                if (currentX == 0)
                     currentPosition = [1, currentY, 0];
-                    miniCube.style.transform = `translateX(${currentPosition[0]*100 - (x*100)}px) translateY(${currentPosition[1]*100 - (y*100)}px) translateZ(${( currentPosition[2]*100)}px) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg) rotateZ(${miniCube.dataset.rotZ}deg)` ;
-                } else if (currentX == 1){
+                else if (currentX == 1)
                     currentPosition = [currentX, currentY, currentZ];
-                    miniCube.style.transform = `rotateZ(${miniCube.dataset.rotZ}deg) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg) translateZ(${(z*100)}px))`;
-                } else if (currentX == 2){
+                else if (currentX == 2)
                     currentPosition = [1, currentY, 2];
-                    miniCube.style.transform = `translateX(${currentPosition[0]*100 - (x*100)}px) translateY(${currentPosition[1]*100 - (y*100)}px) translateZ(${(currentPosition[2]*100)}px)  rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg) rotateZ(${miniCube.dataset.rotZ}deg)`;
-                }
             
             } else if (currentZ == 2){
                 currentPosition = [0, currentY, currentX];
-                miniCube.style.transform = `translateX(${currentPosition[0]*100 - (x*100)}px) translateY(${currentPosition[1]*100 - (y*100)}px) translateZ(${(currentPosition[2]*100)}px)  rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg) rotateZ(${miniCube.dataset.rotZ}deg)`
             }
+            miniCube.style.transform = `translateX(${(currentPosition[0]*100) - (x*100)}px) translateY(${currentPosition[1]*100 - (y*100)}px) translateZ(${(currentPosition[2]*100)}px) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg) rotateZ(${miniCube.dataset.rotZ}deg)`;
             miniCube.dataset.position = currentPosition.join(",");
            
         }
@@ -86,25 +75,19 @@ function rotateXAntiClockwise(axisValue) {
             calculateRotations(miniCube, 'x', -1);
 
             if (currentY == 0) {
-                currentPosition = [currentX, 2-currentZ, 0];
-                miniCube.style.transform = `translateX(${currentPosition[0]*100 - (x*100)}px) translateY(${(currentPosition[1]*100) - (y*100)}px) translateZ(${(currentPosition[2]*100)}px) rotateZ(${miniCube.dataset.rotZ}deg) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg)`;            
-            
+                currentPosition = [currentX, 2-currentZ, 0];            
             } else if (currentY == 1) {
-                if (currentZ == 0){
+                if (currentZ == 0)
                     currentPosition = [currentX, 2, 1];
-                    miniCube.style.transform = `translateX(${currentPosition[0]*100 - (x*100)}px) translateY(${(currentPosition[1]*100) - (y*100)}px) translateZ(${(currentPosition[2]*100)}px) rotateZ(${miniCube.dataset.rotZ}deg) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg)`; ;
-                } else if (currentZ == 1){
+                else if (currentZ == 1)
                     currentPosition = [currentX, currentY, currentZ];
-                    miniCube.style.transform = `rotateZ(${miniCube.dataset.rotZ}deg) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg) translateZ(${(z*100)}px) `;
-                } else if (currentZ == 2){
+                else if (currentZ == 2)
                     currentPosition = [currentX, 0, 1];
-                    miniCube.style.transform = `translateX(${currentPosition[0]*100 - (x*100)}px) translateY(${((currentPosition[1]*100)-(y*100))}px) translateZ(${(currentPosition[2]*100)}px) rotateZ(${miniCube.dataset.rotZ}deg) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg)`;
-                }
             
             } else if (currentY == 2){
                 currentPosition = [currentX, 2-currentZ, 2];
-                miniCube.style.transform = `translateX(${currentPosition[0]*100 - (x*100)}px) translateY(${(currentPosition[1]*100) - (y*100)}px)  translateZ(${(currentPosition[2]*100)}px) rotateZ(${miniCube.dataset.rotZ}deg) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg)`
-             }
+            }
+            miniCube.style.transform = `translateX(${currentPosition[0]*100 - (x*100)}px) translateY(${(currentPosition[1]*100) - (y*100)}px)  translateZ(${(currentPosition[2]*100)}px) rotateZ(${miniCube.dataset.rotZ}deg) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg)`
             miniCube.dataset.position = currentPosition.join(",");
         }
     });
