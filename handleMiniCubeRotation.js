@@ -1,3 +1,4 @@
+ // don't judge me you wrote terrible code when you started too 
  function calculateRotations(miniCube, fixedAxis, rotationVerse){
 
     let rotX = +miniCube.dataset.rotX;
