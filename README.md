@@ -147,3 +147,4 @@ se ho ruotatoZ si 180, allora per ruotare X devo ruotare Xdeg*-1
 bocciata questa idea 
 
 serve un algoritmo che mi calcola come interagiscono tra di loro le rotazioni degli assi  
+pensando a questo, devo pensare a gestire anche i casi opposti in cui le rotazioni sono

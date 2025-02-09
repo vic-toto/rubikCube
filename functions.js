@@ -1,5 +1,5 @@
-
-
+ // don't judge my code it's a work in progress
+ 
 function rotateZClockwise(axisValue) {
         const miniCubes = document.querySelectorAll('.mini-cube');
         miniCubes.forEach(miniCube => {
@@ -22,11 +22,12 @@ function rotateZClockwise(axisValue) {
                 } 
                 else if (currentY == 2)
                     currentPosition = [0, currentX, currentZ];
-                
+                miniCube.dataset.prevTransform = miniCube.style.transform;
                 miniCube.style.transform = `translateX(${(currentPosition[0]*100) - (x*100)}px) translateY(${currentPosition[1]*100 - (y*100)}px) translateZ(${(currentPosition[2]*100)}px) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg) rotateZ(${miniCube.dataset.rotZ}deg)`;
                 miniCube.dataset.position = currentPosition.join(",");
-                
-            }
+                 
+            } else 
+            miniCube.dataset.prevTransform = miniCube.style.transform;
         });
 }
 
@@ -39,7 +40,6 @@ function rotateYClockwise(axisValue) {
            
             let currentPosition = [currentX, currentY, currentZ];
             calculateRotations(miniCube, 'y', 1);
-
             
             if (currentZ == 0) {
                 currentPosition = [2, currentY, currentX];
@@ -54,10 +54,12 @@ function rotateYClockwise(axisValue) {
             } else if (currentZ == 2){
                 currentPosition = [0, currentY, currentX];
             }
+            miniCube.dataset.prevTransform = miniCube.style.transform;
             miniCube.style.transform = `translateX(${(currentPosition[0]*100) - (x*100)}px) translateY(${currentPosition[1]*100 - (y*100)}px) translateZ(${(currentPosition[2]*100)}px) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg) rotateZ(${miniCube.dataset.rotZ}deg)`;
             miniCube.dataset.position = currentPosition.join(",");
            
-        }
+        } else 
+        miniCube.dataset.prevTransform = miniCube.style.transform;
     });
 }
 
@@ -87,11 +89,26 @@ function rotateXAntiClockwise(axisValue) {
             } else if (currentY == 2){
                 currentPosition = [currentX, 2-currentZ, 2];
             }
+            miniCube.dataset.prevTransform = miniCube.style.transform;
             miniCube.style.transform = `translateX(${currentPosition[0]*100 - (x*100)}px) translateY(${(currentPosition[1]*100) - (y*100)}px)  translateZ(${(currentPosition[2]*100)}px) rotateZ(${miniCube.dataset.rotZ}deg) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg)`
             miniCube.dataset.position = currentPosition.join(",");
-        }
+        } else 
+        miniCube.dataset.prevTransform = miniCube.style.transform;
     });
     
+}
+
+function undoMove() {
+
+    const miniCubes = document.querySelectorAll('.mini-cube');
+    miniCubes.forEach(miniCube => {
+        
+        if (miniCube.dataset.prevTransform.length > 0) {
+            miniCube.style.transform = miniCube.dataset.prevTransform; // Revert to the last saved state
+        } else {
+          console.log("No moves to undo.");
+        }
+  });
 }
 
     
@@ -115,6 +132,14 @@ document.addEventListener('keydown', (event) => {
     else if (event.key === 'd') 
         rotateYClockwise(2)
 });
+
+document.addEventListener("keydown", function (event) {
+    if (event.ctrlKey && event.key === "z") {
+      undoMove(); // Undo the last move if Ctrl+Z is pressed
+      console.log("Move undone:");
+    
+    }
+  });
     
 
 

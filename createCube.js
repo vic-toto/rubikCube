@@ -48,6 +48,7 @@ for (let z = 0; z < 3 ; z++) {
             miniCube.dataset.rotZ = 0;
             miniCube.dataset.rotX = 0;
             miniCube.dataset.rotY = 0;
+            miniCube.dataset.prevTransform = "";
 
             miniCube.style.transform = "translateZ(" + z*100 +"px)";
             miniCube.style.left = (x*100) + "px"; //manages position on x axs
