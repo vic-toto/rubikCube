@@ -27,7 +27,11 @@ function toggleMouseState(event) {
         } else if (button.contains(event.target)){
             if (button.innerHTML == "SHUFFLE ME"){
                 randomShuffle();
-            }
+            } else if (button.innerHTML == "SOLVE ME"){
+                // will solve the cube in 20 moves or less
+            } else if (button.innerHTML == "AMUSE ME"){
+                learnToSlay();
+            } 
         }
             else 
                 isKeyDown = true;
