@@ -1,4 +1,5 @@
 let box = document.querySelector('.rubiks-cube');
+let button = document.querySelector('.pixel-button');
 
 let isKeyDown = false;
 let isAMove = false;
@@ -22,10 +23,14 @@ function toggleMouseState(event) {
             yPrev = yStart;
             isAMove = true; // Start tracking mouse movement
             isKeyDown = true; // Mouse is pressed inside the box
-        } else {
-            // Mouse down outside the cube, start rotating the whole cube
-            isKeyDown = true;
+        
+        } else if (button.contains(event.target)){
+            if (button.innerHTML == "SHUFFLE ME"){
+                randomShuffle();
+            }
         }
+            else 
+                isKeyDown = true;
     } else if (event.type === 'mouseup') {
         // Reset on mouse up
         isKeyDown = false;
