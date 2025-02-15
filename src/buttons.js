@@ -1,20 +1,28 @@
+const funzioni = [rotateXAntiClockwise, rotateYClockwise, rotateZClockwise];
+
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
- function shuffle(i, num){
-    if (i % 2 != 0)
-            rotateXAntiClockwise(num);
-        else 
-            rotateYClockwise(num);
+ function shuffle(num){
+    let esegui = funzioni[num];
+    esegui(num);
+    shuffleFunzioni(funzioni);
+}
+
+function shuffleFunzioni(funzioni) {
+    for (let i = funzioni.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [funzioni[i], funzioni[j]] = [funzioni[j], funzioni[i]];
+    }
 }
 
 async function randomShuffle(){
+    let randomIndex = Math.floor(Math.random() * 20);
 
-    for (let i = 0; i < 10; i++) {
-
-        const randomNumber = Math.floor(Math.random() * 3);
-        shuffle(i, randomNumber);
+    for (let i = 0; i < randomIndex; i++) {
+        const randomNumber = Math.floor(Math.random() * funzioni.length);
+        shuffle(randomNumber);
         await sleep(1000);
     }
 

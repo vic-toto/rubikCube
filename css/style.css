@@ -106,7 +106,8 @@ body {
     width: 100px;
     height: 100px;
     transform-style: preserve-3d;
-    transition: all 0.9s ease-out;
+    transition: all 0.5s ease-out;
+    /* transform: scale3d(1, -1, 1) translate3d(-50%, -50%, 0px);  */
      /* transform-origin: center center; */
 }
 

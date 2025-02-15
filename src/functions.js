@@ -23,7 +23,7 @@
                 else if (currentY == 2)
                     currentPosition = [0, currentX, currentZ];
                 miniCube.dataset.prevTransform = miniCube.style.transform;
-                miniCube.style.transform = `translateX(${(currentPosition[0]*100) - (x*100)}px) translateY(${currentPosition[1]*100 - (y*100)}px) translateZ(${(currentPosition[2]*100)}px) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg) rotateZ(${miniCube.dataset.rotZ}deg)`;
+                miniCube.style.transform = `translateX(${(currentPosition[0]*100) - (x*100)}px) translateY(${currentPosition[1]*100 - (y*100)}px) translateZ(${(currentPosition[2]*100)}px) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg) rotateZ(${miniCube.dataset.rotZ}deg) scale3d(1, 1, 1)`;
                 miniCube.dataset.position = currentPosition.join(",");
                  
             } else 
@@ -55,7 +55,7 @@
                 currentPosition = [0, currentY, currentX];
             }
             miniCube.dataset.prevTransform = miniCube.style.transform;
-            miniCube.style.transform = `translateX(${(currentPosition[0]*100) - (x*100)}px) translateY(${currentPosition[1]*100 - (y*100)}px) translateZ(${(currentPosition[2]*100)}px) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg) rotateZ(${miniCube.dataset.rotZ}deg)`;
+            miniCube.style.transform = `translateX(${(currentPosition[0]*100) - (x*100)}px) translateY(${currentPosition[1]*100 - (y*100)}px) translateZ(${(currentPosition[2]*100)}px) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg) rotateZ(${miniCube.dataset.rotZ}deg) scale3d(1, 1, 1)`;
             miniCube.dataset.position = currentPosition.join(",");
            
         } else 
@@ -90,7 +90,7 @@
                 currentPosition = [currentX, 2-currentZ, 2];
             }
             miniCube.dataset.prevTransform = miniCube.style.transform;
-            miniCube.style.transform = `translateX(${currentPosition[0]*100 - (x*100)}px) translateY(${(currentPosition[1]*100) - (y*100)}px)  translateZ(${(currentPosition[2]*100)}px) rotateZ(${miniCube.dataset.rotZ}deg) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg)`
+            miniCube.style.transform = `translateX(${currentPosition[0]*100 - (x*100)}px) translateY(${(currentPosition[1]*100) - (y*100)}px)  translateZ(${(currentPosition[2]*100)}px) rotateZ(${miniCube.dataset.rotZ}deg) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg) scale3d(1, 1, 1)`
             miniCube.dataset.position = currentPosition.join(",");
         } else 
         miniCube.dataset.prevTransform = miniCube.style.transform;
