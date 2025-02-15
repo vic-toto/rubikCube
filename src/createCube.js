@@ -1,6 +1,7 @@
 // Select the rubiks cube container
 const rubiksCube = document.querySelector('.rubiks-cube');
 rubiksCube.style.transform = "rotateX(-30deg) rotateY(30deg)";
+
 // Define the face names for the Rubik's Cube
 const faceNames = ['front', 'back', 'top', 'bottom', 'left', 'right'];
 
@@ -19,7 +20,6 @@ faceNames.forEach(faceName => {
     const face = document.createElement('div');
     face.classList.add('face', faceName);
     face.id = faceName;
-    // face.innerHTML = `<span class="face-name">${faceName}</span>`;
     rubiksCube.appendChild(face);
 });
 
@@ -39,7 +39,7 @@ for (let z = 0; z < 3 ; z++) {
                 face.className = faceData.class;
                 face.style.backgroundColor = faceData.color;
                 face.style.transform = faceData.transform;
-                face.innerHTML = miniCube.dataset.miniCubeId;
+                face.innerHTML = miniCube.dataset.miniCubeId + " " + face.className;
                 miniCube.appendChild(face);
             });
             // setting cube from top left to bottom right

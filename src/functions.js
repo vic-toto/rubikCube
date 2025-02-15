@@ -1,6 +1,6 @@
  // don't judge my code it's a work in progress
  
-function rotateZClockwise(axisValue) {
+ function rotateZClockwise(axisValue) {
         const miniCubes = document.querySelectorAll('.mini-cube');
         miniCubes.forEach(miniCube => {
             let [x, y, z] = miniCube.dataset.position0.split(",").map(Number);
@@ -31,7 +31,7 @@ function rotateZClockwise(axisValue) {
         });
 }
 
-function rotateYClockwise(axisValue) {
+ function rotateYClockwise(axisValue) {
     const miniCubes = document.querySelectorAll('.mini-cube');
     miniCubes.forEach(miniCube => {
         let [x, y, z] = miniCube.dataset.position0.split(",").map(Number);
@@ -64,7 +64,7 @@ function rotateYClockwise(axisValue) {
 }
 
 
-function rotateXAntiClockwise(axisValue) {
+ function rotateXAntiClockwise(axisValue) {
     const miniCubes = document.querySelectorAll('.mini-cube');
     miniCubes.forEach(miniCube => {
         

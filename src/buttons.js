@@ -21,6 +21,8 @@ async function randomShuffle(){
 }
 
 function learnToSlay(){
+    console.log("yo");
+    open("https://www.youtube.com/watch?v=VBZ-_ICc4dQ");
 
     // still deciding what to do 
 }
