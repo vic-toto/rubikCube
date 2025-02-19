@@ -114,6 +114,8 @@ function undoMove() {
 document.addEventListener('keydown', (event) => {
     if (event.key === 'f')
         rotateClockwise('z', 2);
+    if (event.key === 'F')
+        rotateAntiClockwise('z', 2);
     else if (event.key === 'm')
         rotateClockwise('z', 1);
     else if (event.key === 'b')

@@ -85,9 +85,9 @@
             } else
                 rotZ += 90;
    }  
-             miniCube.dataset.rotX = rotX;
-             miniCube.dataset.rotY = rotY;
-             miniCube.dataset.rotZ = rotZ;
+             miniCube.dataset.rotX = rotX * rotationVerse;
+             miniCube.dataset.rotY = rotY * rotationVerse;
+             miniCube.dataset.rotZ = rotZ * rotationVerse;
 }
 
 //if rotationVerse is 1, it will behave in line with a clockwise rotation
