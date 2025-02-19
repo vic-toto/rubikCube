@@ -1,4 +1,5 @@
  // don't judge me you wrote terrible code when you started too 
+ // These functions handle the css rotation of the minicubes 
  function calculateRotations(miniCube, fixedAxis, rotationVerse){
 
     let rotX = +miniCube.dataset.rotX;
@@ -87,4 +88,17 @@
              miniCube.dataset.rotX = rotX;
              miniCube.dataset.rotY = rotY;
              miniCube.dataset.rotZ = rotZ;
+}
+
+//if rotationVerse is 1, it will behave in line with a clockwise rotation
+// if rotationVerse is -1, it will behave in line with an anti-clockwise rotation
+// it's not rocket science 
+
+function doTransformation(miniCube, axis, rotationVerse){
+    let currentPosition = miniCube.dataset.position.split(",").map(Number);
+    let [x, y, z] = miniCube.dataset.position0.split(",").map(Number);
+    calculateRotations(miniCube, axis, rotationVerse);
+    
+    miniCube.dataset.prevTransform = miniCube.style.transform;
+    miniCube.style.transform = `translateX(${(currentPosition[0]*100) - (x*100)}px) translateY(${currentPosition[1]*100 - (y*100)}px) translateZ(${(currentPosition[2]*100)}px) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg) rotateZ(${miniCube.dataset.rotZ}deg) scale3d(1, 1, 1)`;
 }
