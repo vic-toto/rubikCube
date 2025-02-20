@@ -14,7 +14,7 @@ function rotateClockwise(axis, axisValue) {
 
         const equivalentX = new Map();    // equivalentX and equivalent X are placeholder variables, 
         equivalentX.set('x', currentZ);   //useful to treat all faces with the same logic.
-        equivalentX.set('y', currentZ);   //  So, e.g., if I'm rotating Z, X and Y will be X and Y, but if 
+        equivalentX.set('y', currentX);   //  So, e.g., if I'm rotating Z, X and Y will be X and Y, but if 
         equivalentX.set('z', currentX);   // we are rotating Y, we look at the upper face imagining  
                                           // Z is the Y axis and X is still X
         const equivalentY = new Map();
@@ -26,28 +26,29 @@ function rotateClockwise(axis, axisValue) {
             const currentPos = new Map();
 
             if (equivalentY.get(axis) == 0) { 
-                currentPos.set('z', [2, currentX, currentZ]);
+                currentPos.set('x', [currentX, currentZ, 2]);  
                 currentPos.set('y', [2, currentY, currentX]);
-                currentPos.set('x', [currentX, currentZ, 2-currentZ]);  
+                currentPos.set('z', [2, currentX, currentZ]);
 
             } else if (equivalentY.get(axis) == 1) {
-
+                
                 if (equivalentX.get(axis) == 0){
                     currentPos.set('z', [1, 0, currentZ]);
-                    currentPos.set('y', [2, currentY, currentX]);
-
+                    currentPos.set('y', [1, currentY, 0]);
+                    currentPos.set('x', [currentX, 1, 0]);
                 } else if (equivalentX.get(axis) == 1)
                     currentPos.set(axis,[currentX, currentY, currentZ]);
-
                 else if ((equivalentX.get(axis) == 2)){
                     currentPos.set('z', [1, 2, currentZ]);
-                    currentPos.set('y', [0, currentY, currentX]);
+                    currentPos.set('y', [1, currentY, 2]);
+                    currentPos.set('x', [currentX, 1, 2]);
                 }
                 
             } else if (equivalentY.get(axis) == 2) {
                 //roba
                 currentPos.set('z', [0, currentX, currentZ]);
                 currentPos.set('y', [0, currentY, currentX]);
+                currentPos.set('x', [currentX, 0, currentZ]);
                 // currentPos.set('x', [currentX, currentZ, 2-currentZ]);
                 
             }

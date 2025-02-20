@@ -15,20 +15,20 @@
 
     if (fixedAxis == 'x') {
         if (rotZ != 0 && (rotZ % 360 != 0) && rotY != 0 && (rotY % 360 != 0)) {
-            console.log("rotatingX " + resX + " " + resY + " " + resZ); 
+            // console.log("rotatingX " + resX + " " + resY + " " + resZ); 
             if (resX == 1) //90 deg rotation or equivalent
-                rotY -= 90;
-            if (resX == 2) //180 deg rotation or equivalent
-                rotX -= 90;
-            if (resX == 3) //270 deg rotation or equivalent
                 rotY += 90;
+            if (resX == 2) //180 deg rotation or equivalent
+                rotX += 90;
+            if (resX == 3) //270 deg rotation or equivalent
+                rotY -= 90;
         } else
-            rotX += 90;
+            rotX -= 90;
 
     } else if (fixedAxis == 'y'){
         
 
-            console.log( "id " + miniCube.dataset.miniCubeId + "rotatingY " + resX + " " + resY + " " + resZ);
+            // console.log( "id " + miniCube.dataset.miniCubeId + "rotatingY " + resX + " " + resY + " " + resZ);
 
             if (resX == 1){
                    rotZ += 90;
@@ -96,9 +96,10 @@
 
 function doTransformation(miniCube, axis, rotationVerse){
     let currentPosition = miniCube.dataset.position.split(",").map(Number);
+    console.log(miniCube.dataset.miniCubeId +" "+ currentPosition)
     let [x, y, z] = miniCube.dataset.position0.split(",").map(Number);
     calculateRotations(miniCube, axis, rotationVerse);
     
     miniCube.dataset.prevTransform = miniCube.style.transform;
-    miniCube.style.transform = `translateX(${(currentPosition[0]*100) - (x*100)}px) translateY(${currentPosition[1]*100 - (y*100)}px) translateZ(${(currentPosition[2]*100)}px) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg) rotateZ(${miniCube.dataset.rotZ}deg) scale3d(1, 1, 1)`;
+    miniCube.style.transform = `translateX(${((currentPosition[0]*100) - (x*100))}px) translateY(${currentPosition[1]*100 - (y*100)}px) translateZ(${(currentPosition[2]*100)}px) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg) rotateZ(${miniCube.dataset.rotZ}deg) scale3d(1, 1, 1)`;
 }
