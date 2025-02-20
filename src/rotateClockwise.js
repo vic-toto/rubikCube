@@ -30,27 +30,22 @@ function rotateClockwise(axis, axisValue) {
                 currentPos.set('y', [2, currentY, currentX]);
                 currentPos.set('z', [2, currentX, currentZ]);
 
-            } else if (equivalentY.get(axis) == 1) {
-                
+            } else if (equivalentY.get(axis) == 1) {       
                 if (equivalentX.get(axis) == 0){
-                    currentPos.set('z', [1, 0, currentZ]);
+                    currentPos.set('x', [currentX, 0, 1]);
                     currentPos.set('y', [1, currentY, 0]);
-                    currentPos.set('x', [currentX, 1, 0]);
+                    currentPos.set('z', [1, 0, currentZ]);
                 } else if (equivalentX.get(axis) == 1)
                     currentPos.set(axis,[currentX, currentY, currentZ]);
                 else if ((equivalentX.get(axis) == 2)){
-                    currentPos.set('z', [1, 2, currentZ]);
+                    currentPos.set('x', [currentX, 2, 1]);
                     currentPos.set('y', [1, currentY, 2]);
-                    currentPos.set('x', [currentX, 1, 2]);
-                }
-                
+                    currentPos.set('z', [1, 2, currentZ]);
+                }   
             } else if (equivalentY.get(axis) == 2) {
-                //roba
-                currentPos.set('z', [0, currentX, currentZ]);
+                currentPos.set('x', [currentX, currentZ, 0]);    
                 currentPos.set('y', [0, currentY, currentX]);
-                currentPos.set('x', [currentX, 0, currentZ]);
-                // currentPos.set('x', [currentX, currentZ, 2-currentZ]);
-                
+                currentPos.set('z', [0, currentX, currentZ]);
             }
             miniCube.dataset.position = currentPos.get(axis);
             doTransformation(miniCube, axis, 1);
