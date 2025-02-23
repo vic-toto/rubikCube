@@ -1,5 +1,24 @@
-//Clockwise and Anti-clockwise functions to handle face rotations
+// RotateFace handles face rotations for both clock-wise and anti-clocwise
 // these function calculate and save the changes in position of each minicube
+
+function checkRotationValues(axis, axisValue, rotationVerse){
+    //rotationVerse has to be a positive or negative int in order to define if the move is clock or anti-clockwise
+    if (!rotationVerse){
+        console.log("Error: invalid rotationVere in rotateFace() | rotationVerse: " +  rotationVerse);
+        return (0);
+    }
+    // there is no fourth dimension in this project, so you can't have a different axis from x,y,z
+    if (axis != 'x' && axis != 'y' && axis != 'z'){
+        console.log("Error: invalid axis in rotateFace() | axis: " +  axis);
+        return (0);
+    }
+    // you can't move something that does not exist 
+    if (axisValue > cubeLength){
+        console.log("Error: invalid axisValue in rotateFace() | cubeLength:  " + cubeLength + " axisValue: " + axisValue);
+        return (0);
+    }
+    return (1);
+}
 
 function    calculateRotation(miniCube, axis, rotationVerse){
 
@@ -44,9 +63,13 @@ function    calculateRotation(miniCube, axis, rotationVerse){
 
 function rotateFace(axis, axisValue, rotationVerse) {
 
+    if (!(checkRotationValues(axis, axisValue, rotationVerse)))
+        return ; 
+
+    
+
     const miniCubes = document.querySelectorAll('.mini-cube');
     miniCubes.forEach(miniCube => {
-
         let [currentX, currentY, currentZ] = miniCube.dataset.position.split(",").map(Number);
         const current = new Map();
         current.set('x', currentX);
