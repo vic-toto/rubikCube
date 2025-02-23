@@ -94,7 +94,7 @@
 // if rotationVerse is -1, it will behave in line with an anti-clockwise rotation
 // it's not rocket science 
 
-function doTransformation(miniCube, axis, rotationVerse){
+function doRotation(miniCube, axis, rotationVerse){
     let currentPosition = miniCube.dataset.position.split(",").map(Number);
     console.log(miniCube.dataset.miniCubeId +" "+ currentPosition)
     let [x, y, z] = miniCube.dataset.position0.split(",").map(Number);

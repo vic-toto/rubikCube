@@ -113,25 +113,25 @@ function undoMove() {
     
 document.addEventListener('keydown', (event) => {
     if (event.key === 'f')
-        rotateClockwise('z', 2);
+        rotateClockwise('z', 2, 1);
     if (event.key === 'F')
-        rotateAntiClockwise('z', 2);
+        rotateAntiClockwise('z', 2, 1);
     else if (event.key === 'm')
-        rotateClockwise('z', 1);
+        rotateClockwise('z', 1, 1);
     else if (event.key === 'b')
-        rotateClockwise('z', 0);
+        rotateClockwise('z', 0, 1);
      else if (event.key === 'l') 
-          rotateClockwise('x', 0);
+          rotateClockwise('x', 0, 1);
      else if (event.key === 'c') 
-         rotateClockwise('x', 1);
+         rotateClockwise('x', 1, 1);
      else if (event.key === 'r') 
-         rotateClockwise('x', 2);
+         rotateClockwise('x', 2, 1);
     else if (event.key === 'u') 
-        rotateClockwise('y',0)
+        rotateClockwise('y',0, 1)
     else if (event.key === 'C') 
-        rotateClockwise('y', 1)
+        rotateClockwise('y', 1, 1)
     else if (event.key === 'd') 
-        rotateClockwise('y', 2)
+        rotateClockwise('y', 2, 1)
 });
 
 document.addEventListener("keydown", function (event) {
