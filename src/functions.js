@@ -97,18 +97,7 @@
     
 }
 
-function undoMove() {
 
-    const miniCubes = document.querySelectorAll('.mini-cube');
-    miniCubes.forEach(miniCube => {
-        
-        if (miniCube.dataset.prevTransform.length > 0) {
-            miniCube.style.transform = miniCube.dataset.prevTransform; // Revert to the last saved state
-        } else {
-          console.log("No moves to undo.");
-        }
-  });
-}
 
     
 document.addEventListener('keydown', (event) => {
@@ -135,71 +124,6 @@ document.addEventListener('keydown', (event) => {
 });
 
 document.addEventListener("keydown", function (event) {
-    if (event.ctrlKey && event.key === "z") {
-      undoMove(); // Undo the last move if Ctrl+Z is pressed
-      console.log("Move undone:");
-    
-    }
+    if (event.ctrlKey && event.key === "z")
+      undoRotation(); // Undo the last move if Ctrl+Z is pressed
   });
-    
-
-
-
-// function rotateLeftAntiClockwise() {
-//     const miniCubes = document.querySelectorAll('.mini-cube');
-//     miniCubes.forEach(miniCube => {
-//          let [x, y, z] = miniCube.dataset.position.split(",").map(Number);
-
-//         if (x === 0) {
-//             console.log(miniCube.id);
-//             if (z == 0)
-//                 miniCube.style.transform = `translate3d(0px, ${((y*-100)+200)}px, ${((y*100))}px) rotateX(90deg)`;
-//             if (z == 1){
-//                 if (y == 0)
-//                     miniCube.style.transform = 'translate3d(0px, 100px, -100px) rotateX(90deg)';
-//                 if (y == 1)
-//                     miniCube.style.transform = 'rotateX(90deg)';
-//                 if (y == 2)
-//                     miniCube.style.transform = 'translate3d(0px, -100px, 100px) rotateX(90deg)';
-//             }
-//             if (z == 2)
-//                 miniCube.style.transform = `translate3d(0px, ${(y*-100)}px, ${((y*100)-200)}px) rotateX(90deg)`;
-//         }
-//     });
-// }
-
-// function doTransformation(minicube, x, y, z, axis, rot){
-//     miniCube.style.transform += `translate3d(${x}px, ${y}px, ${z}px) rotate${axis}(${rot*90}deg)`
-// }
-
-// function rotateClockwise(fixedAxis, fixedValue){
-
-//     // This lookup table is useful to dynamically handle the rotation of any of the faces
-//     // I have three coordinates: one of them I will use to determine which coordinate is fixed 
-//     // I will use one of the mover coordinates to iterate through the mini-cubes
-//     // The changer coordinate will determine the new position and transform effect
-
-//     const axisMap = {
-//         x: {fixed: x, mover: y, changer: z },
-//         y: {fixed: y, mover: z, changer: x },
-//         z: {fixed: z, mover: x, changer: y }
-//     };
-
-//     const { fixed, mover, changer } = axisMap[fixedAxis];
-
-//     const miniCubes = Array.from(document.querySelectorAll('.mini-cube')).filter(miniCube => {
-//         const [x, y, z] = miniCube.dataset.position.split(",").map(Number);
-//         return { x, y, z }[fixedAxis] === fixedValue;
-//     });
-
-    // miniCubes.forEach(miniCube => {
-    //     if (mover == lowestValue)
-    //         dotransformation(minicube, (200 - (changer*100)), changer*100, 0, fixed, 1);
-    //    if (mover == 1midValue){
-    //         if (x == 0)
-    //             dotransformation(minicube, 100, -100, 0, "X", 1);
-    //    } 
-    //   if (mover == highestValue)
-//     //      
-// }
-

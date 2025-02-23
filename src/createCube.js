@@ -2,7 +2,8 @@
 const rubiksCube = document.querySelector('.rubiks-cube');
 rubiksCube.style.transform = "rotateX(-30deg) rotateY(30deg)";
 
-let cubeLength = 0;
+let cubeMaxCoordinate = -1;
+let cubeMidCoordinate = 0;
 
 // Define the face names for the Rubik's Cube
 const faceNames = ['front', 'back', 'top', 'bottom', 'left', 'right'];
@@ -61,5 +62,6 @@ for (let z = 0; z < 3 ; z++) {
             i++;
         }
     }
-    cubeLength++;
+    cubeMaxCoordinate += 1;
+    cubeMidCoordinate = Math.floor(cubeMaxCoordinate / 2);   
 }

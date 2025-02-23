@@ -13,7 +13,7 @@ function checkRotationValues(axis, axisValue, rotationVerse){
         return (0);
     }
     // you can't move something that does not exist 
-    if (axisValue > cubeLength){
+    if (axisValue > cubeMaxCoordinate){
         console.log("Error: invalid axisValue in rotateFace() | cubeLength:  " + cubeLength + " axisValue: " + axisValue);
         return (0);
     }
@@ -37,22 +37,24 @@ function    calculateRotation(miniCube, axis, rotationVerse){
     const currentPos = new Map();
 
     if (equivalentY.get(axis) == 0) { 
-        currentPos.set('x', [currentX, currentZ, 2]);  
-        currentPos.set('y', [2, currentY, currentX]);
-        currentPos.set('z', [2, currentX, currentZ])
+        currentPos.set('x', [currentX, currentZ, cubeMaxCoordinate]);  
+        currentPos.set('y', [cubeMaxCoordinate, currentY, currentX]);
+        currentPos.set('z', [cubeMaxCoordinate, currentX, currentZ])
     } else if (equivalentY.get(axis) == 1) {       
         if (equivalentX.get(axis) == 0){
-            currentPos.set('x', [currentX, 0, 1]);
-            currentPos.set('y', [1, currentY, 0]);
-            currentPos.set('z', [1, 0, currentZ]);
+            currentPos.set('x', [currentX, 0, cubeMidCoordinate]); // [currentX, 0, 1]);
+            currentPos.set('y', [cubeMidCoordinate, currentY, 0]); //currentPos.set('y', [1, currentY, 0]);
+            currentPos.set('z', [cubeMidCoordinate, 0, currentZ]); //currentPos.set('z', [1, 0, currentZ]);
+            
+            
         } else if (equivalentX.get(axis) == 1)
             currentPos.set(axis,[currentX, currentY, currentZ]);
         else if ((equivalentX.get(axis) == 2)){
-            currentPos.set('x', [currentX, 2, 1]);
-            currentPos.set('y', [1, currentY, 2]);
-            currentPos.set('z', [1, 2, currentZ]);
+            currentPos.set('x', [currentX, cubeMaxCoordinate, cubeMidCoordinate]); //[currentX, cubeMaxCoordinate, 1]);
+            currentPos.set('y', [cubeMidCoordinate, currentY, cubeMaxCoordinate]); //[1, currentY, cubeMaxCoordinate]);
+            currentPos.set('z', [cubeMidCoordinate, cubeMaxCoordinate, currentZ]); //[1, cubeMaxCoordinate, currentZ]);
         }   
-    } else if (equivalentY.get(axis) == 2) {
+    } else if (equivalentY.get(axis) == cubeMaxCoordinate) {
         currentPos.set('x', [currentX, currentZ, 0]);    
         currentPos.set('y', [0, currentY, currentX]);
         currentPos.set('z', [0, currentX, currentZ]);
@@ -62,11 +64,8 @@ function    calculateRotation(miniCube, axis, rotationVerse){
 
 
 function rotateFace(axis, axisValue, rotationVerse) {
-
     if (!(checkRotationValues(axis, axisValue, rotationVerse)))
         return ; 
-
-    
 
     const miniCubes = document.querySelectorAll('.mini-cube');
     miniCubes.forEach(miniCube => {
@@ -80,6 +79,6 @@ function rotateFace(axis, axisValue, rotationVerse) {
             calculateRotation(miniCube, axis, rotationVerse);
             doRotation(miniCube, axis, rotationVerse);    
         } else 
-            miniCube.dataset.prevTransform = miniCube.style.transform;
+            miniCube.dataset.prevTransform = miniCube.style.transform; //this is to allow ctrl+z to undo the move, without undoing all moves on all minicubes
     });
 }

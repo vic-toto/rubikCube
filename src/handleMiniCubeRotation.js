@@ -103,3 +103,16 @@ function doRotation(miniCube, axis, rotationVerse){
     miniCube.dataset.prevTransform = miniCube.style.transform;
     miniCube.style.transform = `translateX(${((currentPosition[0]*100) - (x*100))}px) translateY(${currentPosition[1]*100 - (y*100)}px) translateZ(${(currentPosition[2]*100)}px) rotateX(${miniCube.dataset.rotX}deg) rotateY(${miniCube.dataset.rotY}deg) rotateZ(${miniCube.dataset.rotZ}deg) scale3d(1, 1, 1)`;
 }
+
+function undoRotation() {
+
+    const miniCubes = document.querySelectorAll('.mini-cube');
+    miniCubes.forEach(miniCube => {
+        
+        if (miniCube.dataset.prevTransform.length > 0) {
+            miniCube.style.transform = miniCube.dataset.prevTransform; // Revert to the last saved state
+        } else {
+          console.log("No moves to undo.");
+        }
+  });
+}
