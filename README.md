@@ -16,6 +16,7 @@ I wanted to make it a bit more challenging for myself, so there's also a front-e
         other moves are WIP 
 
 - If you press ctrl+Z, you will undo your last move. This is limited to one move anullment. 
+- The code is applicable to any cube of any size, you can modify the size currently hardcoding cubeSize in the createCube.js file
 
 
 You will find comments in the code to explain things and I'll add some documentation here on the project
