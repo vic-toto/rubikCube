@@ -1,4 +1,4 @@
-const funzioni = [rotateClockwise];
+const funzioni = [rotateFace];
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));

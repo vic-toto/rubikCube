@@ -1,9 +1,9 @@
 // Select the rubiks cube container
 const rubiksCube = document.querySelector('.rubiks-cube');
-rubiksCube.style.transform = "rotateX(-30deg) rotateY(30deg)";
+rubiksCube.style.transform = "rotateX(-10deg) rotateY(20deg)";
 
 let cubeMaxCoordinate = -1;
-let cubeMidCoordinate = 0;
+let id = 0;
 
 // Define the face names for the Rubik's Cube
 const faceNames = ['front', 'back', 'top', 'bottom', 'left', 'right'];
@@ -26,17 +26,16 @@ faceNames.forEach(faceName => {
     rubiksCube.appendChild(face);
 });
 
+let cubeSize = 8
 
-let i = 0;
-
-for (let z = 0; z < 3 ; z++) {
-    for (let x = 0; x < 3; x++) {
-        for (let y = 0; y < 3; y++) {
+for (let z = 0; z < cubeSize ; z++) {
+    for (let x = 0; x < cubeSize; x++) {
+        for (let y = 0; y < cubeSize; y++) {
             // Create the mini-cube
             const miniCube = document.createElement('div');
             miniCube.classList.add('mini-cube');
             // Create and append each face to the mini-cube
-            miniCube.dataset.miniCubeId = i;
+            miniCube.dataset.miniCubeId = id;
             miniCubeFaces.forEach(faceData => {
                 const face = document.createElement('div');
                 face.className = faceData.class;
@@ -59,9 +58,9 @@ for (let z = 0; z < 3 ; z++) {
             // miniCube.style.origin = "center center";
 
             rubiksCube.appendChild(miniCube);
-            i++;
+            id++;
         }
     }
-    cubeMaxCoordinate += 1;
-    cubeMidCoordinate = Math.floor(cubeMaxCoordinate / 2);   
+    if (z == cubeSize-1) // this will be changed into an input variable requested to the user upon 
+        cubeMaxCoordinate = z; //start of the code
 }
