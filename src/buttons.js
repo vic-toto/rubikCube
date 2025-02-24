@@ -18,6 +18,7 @@ function shuffleFunzioni(funzioni) {
 }
 
 async function randomShuffle(){
+
     let randomIndex = Math.floor(Math.random() * 20);
 
     for (let i = 0; i < randomIndex; i++) {
@@ -28,9 +29,11 @@ async function randomShuffle(){
 
 }
 
-function learnToSlay(){
-    console.log("yo");
-    open("https://www.youtube.com/watch?v=VBZ-_ICc4dQ");
+function solve(){
+    //solves in 20 moves or less;
+}
 
-    // still deciding what to do 
+// enjoy as much as I do
+function enjoy(){
+    open("https://www.youtube.com/watch?v=zGMKLHVJ1D0");
 }
