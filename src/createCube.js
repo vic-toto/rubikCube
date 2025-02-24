@@ -26,7 +26,7 @@ faceNames.forEach(faceName => {
     rubiksCube.appendChild(face);
 });
 
-let cubeSize = 5;
+let cubeSize = 3;
 cubeMaxCoordinate = cubeSize - 1;
 
 for (let z = 0; z < cubeSize ; z++) {
