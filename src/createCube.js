@@ -26,11 +26,15 @@ faceNames.forEach(faceName => {
     rubiksCube.appendChild(face);
 });
 
-let cubeSize = 8
+let cubeSize = 5;
+cubeMaxCoordinate = cubeSize - 1;
 
 for (let z = 0; z < cubeSize ; z++) {
     for (let x = 0; x < cubeSize; x++) {
         for (let y = 0; y < cubeSize; y++) {
+
+            if ((!(x > 0 && x < cubeSize-1)) || (!(y > 0 && y < cubeSize-1)) || (!(z > 0 && z  < cubeSize-1))){
+            
             // Create the mini-cube
             const miniCube = document.createElement('div');
             miniCube.classList.add('mini-cube');
@@ -51,16 +55,14 @@ for (let z = 0; z < cubeSize ; z++) {
             miniCube.dataset.rotX = 0;
             miniCube.dataset.rotY = 0;
             miniCube.dataset.prevTransform = "";
-
             miniCube.style.transform = "translateZ(" + z*100 +"px)";
-            miniCube.style.left = (x*100) + "px"; //manages position on x axs
-            miniCube.style.top = (y*100) + "px"; //manages position on y axis
-            // miniCube.style.origin = "center center";
+            miniCube.style.left = (x*100) + "px";
+            miniCube.style.top = (y*100) + "px";
 
             rubiksCube.appendChild(miniCube);
             id++;
         }
+        
     }
-    if (z == cubeSize-1) // this will be changed into an input variable requested to the user upon 
-        cubeMaxCoordinate = z; //start of the code
+}
 }
