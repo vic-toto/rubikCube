@@ -5,9 +5,9 @@ document.addEventListener('keydown', (event) => {
     if (event.key === 'F')
         rotateFace('z', 2, -1);
     else if (event.key === 'm')
-        rotateFace('z', 1, 1);
+        rotateFace('z', 1, -1);
     else if (event.key === 'b')
-        rotateFace('z', 0, 1);
+        rotateFace('z', 0, -1);
      else if (event.key === 'l') 
         rotateFace('x', 0, 1);
      else if (event.key === 'L') 

@@ -40,10 +40,6 @@ function handleMouseMove(event) {
             // Inside the box, calculate deltas for movement
             const deltaX = event.clientX - xPrev;
             const deltaY = event.clientY - yPrev;
-
-            // Log deltas for debugging
-            console.log(`Delta X: ${deltaX}, Delta Y: ${deltaY}`);
-
             // Detect drag direction and log it
             if (Math.abs(deltaX) > Math.abs(deltaY) && (Math.abs(deltaY) < 100)) {
                 console.log('Horizontal drag');
@@ -59,7 +55,9 @@ function handleMouseMove(event) {
         } else {
             // Outside the box, continue rotating the cube based on mouse position
             rotateCube(event.clientX, event.clientY);
-        }
+        } 
+        if (button.contains(event.target))
+            enjoy();
     }
 }
 

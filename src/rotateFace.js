@@ -20,15 +20,15 @@ function checkRotationValues(axis, axisValue, rotationVerse){
     return (1);
 }
 
-function    calculateRotation(miniCube, axis, rotationVerse){
+function    calculateRotationOnFace(miniCube, axis, rotationVerse){
 
     let [currentX, currentY, currentZ] = miniCube.dataset.position.split(",").map(Number);
     const currentPos = new Map();
-    if (rotationVerse > 0) {
+    if (rotationVerse > 0) { // clockwise cases
         currentPos.set('x', [currentX, currentZ, cubeMaxCoordinate - currentY]);  
         currentPos.set('y', [cubeMaxCoordinate - currentZ , currentY, currentX]);  
         currentPos.set('z', [cubeMaxCoordinate - currentY, currentX, currentZ]);
-    } else if (rotationVerse < 0) {
+    } else if (rotationVerse < 0) { // anticlockwise cases
         currentPos.set('x', [currentX, cubeMaxCoordinate - currentZ, currentY]);  
         currentPos.set('y', [currentZ, currentY, cubeMaxCoordinate - currentX]);  
         currentPos.set('z', [currentY, cubeMaxCoordinate - currentX, currentZ]);
@@ -51,10 +51,12 @@ function rotateFace(axis, axisValue, rotationVerse) {
         current.set('y', currentY);
         current.set('z', currentZ);
 
-        if (current.get(axis) === axisValue) {
-            calculateRotation(miniCube, axis, rotationVerse);
-            doRotation(miniCube, axis, rotationVerse);    
+        if (current.get(axis) == axisValue) {
+            calculateRotationOnFace(miniCube, axis, rotationVerse);
+            doRotationOnAxis(miniCube, axis, rotationVerse);    
         } else 
             miniCube.dataset.prevTransform = miniCube.style.transform; //this is to allow ctrl+z to undo the move, without undoing all moves on all minicubes
     });
+    console.log("");
+
 }

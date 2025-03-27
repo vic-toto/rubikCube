@@ -35,3 +35,28 @@ To do:
     3. display result 
 
 - figure out how to solve the cube in less than 20 moves
+
+
+casi rotx roty rotz
+0 0 0 
+0 0 1
+0 1 0
+0 1 1 
+1 1 1 
+1 1 0
+1 0 1
+1 0 0 
+0 1 0
+
+
+The idea is to structure the interaction between these axes and their rotations in a modular way, similar to how calculateRotation works, where you abstract each rotation logic based on the axis in question.
+
+Normalization: Start by normalizing resX, resY, and resZ. This is important to ensure that the rotations behave consistently. You’re already doing this with the (rotX / 90) logic and applying the modulo to fit it within a 360-degree rotation cycle.
+
+Handle Axis by Axis: After normalization, you should break the logic down by axis. For example, when rotating along the X-axis, the other axes might be affected differently depending on whether the mini-cube has already been rotated 90°, 180°, or 270°.
+
+Interaction Based on ResX and ResY:
+
+If resX or resY is 1 (meaning 90 or 270 degrees): This indicates that the mini-cube's axes have shifted significantly and further rotations should adjust the other axes accordingly. For example, a Z-rotation might need to account for the fact that the X-axis is now in a different orientation.
+If resX or resY is 2 (meaning 180 degrees): The behavior may be more predictable, as the mini-cube has been rotated halfway around its axis. This might simplify the subsequent rotations because its local axes should still be aligned in a simple way.
+If resX or resY is 3 (270 degrees): Again, this affects how the axes should behave, and you may need to reverse some rotations to compensate for the 270-degree turn.
